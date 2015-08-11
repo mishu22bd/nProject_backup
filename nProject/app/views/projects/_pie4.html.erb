@@ -1,0 +1,76 @@
+		<%= javascript_include_tag :"Chart.js" %>
+  
+		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		<style >
+			canvas{
+			}
+		</style>
+		<canvas id="canvas" height="280" width="280"></canvas>
+
+
+		<% oIP = (@openIssues.to_f/@numberOfIssues.to_f)*100.00 %>
+		<% oIPstring = oIP.ceil %>
+		<% check = oIPstring.to_s  %>
+
+		<% iIP = (@progressIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+		<% iIPstring = iIP.ceil %>
+
+
+		<% rIP = (@resolvedIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+		<% rIPstring = rIP.ceil %>
+
+
+
+		<% cIP = (@closedIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+		<% cIPstring = cIP.ceil %>
+
+
+        <div style="float:right; color:#fff; list-style:none;  margin-right: 0px;"> 
+
+        	<li> <%= image_tag '/plugin_assets/imeetdashboard/images/red.jpg', :size  => '10x10' %> Open Issues in % </li>
+        	 <li> <%= image_tag '/plugin_assets/imeetdashboard/images/progress.png', :size  => '10x10' %> In Progress Issues in % </li>
+       <li> <%= image_tag '/plugin_assets/imeetdashboard/images/yellow.jpg', :size  => '10x10' %> Resolve Issues in % </li>
+        <li> <%= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '10x10' %> Close Issues in %</li>
+        </div>
+
+	  <script>
+
+		var pieData = [
+				{
+					value : <%= @openIssues %>,
+					color : '#ff2c29',
+					label :  <%= check %> ,
+					labelColor : 'white', 
+					labelFontSize : '30',
+					labelAlign : 'right'
+				},
+				{
+					value : <%= @progressIssues %>,
+					color : '#e4dc44',
+					label : <%= iIPstring  %>,
+					labelColor : 'white',
+					labelFontSize : '30',
+					labelAlign : 'right'
+				},
+				{
+					value : <%= @resolvedIssues %>,
+					color : '#21c200',
+					label : <%= rIPstring  %>,
+					labelColor : 'white',
+					labelFontSize : '30',
+					labelAlign : 'right'
+				},
+				{
+					value : <%= @closedIssues %>,
+					color : '#3272c2',
+					label : <%= cIPstring  %>,
+					labelColor : 'white',
+					labelFontSize : '30',
+					labelAlign : 'right'
+				}
+			
+			];
+
+	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+	
+	</script>

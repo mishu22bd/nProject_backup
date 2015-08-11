@@ -1,0 +1,109 @@
+/* Smartphones (landscape and portrait) ----------- */
+@media screen and (max-width: 768px) {
+
+    * {
+        max-width: 460px;
+    }
+
+
+    .container {
+       padding:10px;
+    }
+
+    div.timelineToggle {
+       float:none;
+    }
+
+    .timelineEvent div.media {
+        display:none;
+        float:none;
+        margin-top: 120px;
+    }
+
+    .timelineMinor dt {
+       font-size:1.2em;
+       white-space: normal;
+       font-family: "helvetica neue",helvetica,arial,sans-serif;
+       font-size: 13px;
+    }
+
+    .timelineMinor dd h3 {
+       font-size:1em;
+       white-space: normal;
+    }
+
+    div#timelineContainer {
+    }
+
+    .timelineMinor dd {
+        
+        padding-left:0;
+        width:100%;
+        font-family: "helvetica neue",helvetica,arial,sans-serif;
+        font-size: 13px;
+    }
+
+    .timelineEvent .media p {
+       font-size:1em;
+    }
+
+    dl.timelineMinor {
+       float:none;
+       max-width:80%;
+    }
+
+    .timelineEvent p {
+       float:none;
+       width:100%;
+    }
+
+    .timelineEvent blockquote {
+       float:none;
+       width:200px;
+       font-size:1em;
+    }
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+
+    * {
+        max-width: 300px;
+    }
+
+}
+
+table.active_table{
+    border: 0px solid #FFFFFF;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "helvetica neue",helvetica,arial,sans-serif;
+    font-size: 13px;
+      }
+
+table.active_table tr.odd  {
+background-color: #fff;
+
+
+}
+table.active_table tr.even  {
+background-color: #fff;
+
+
+}
+table.active_table tr.active_tr td {
+
+background-color: #fff;
+
+}
+
+.impA td{
+  word-spacing: 3px;
+
+}
+.impU td{
+  word-spacing: 3px;
+
+}
+.impTab tr{
+  word-spacing: 3px;
+}

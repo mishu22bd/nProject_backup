@@ -1,0 +1,848 @@
+/* Progress Bar for the tables in dashboard_Eumna*/
+.progress {
+ background-color: #B8B3B3;
+ height: 1rem;
+ width: 120px;
+ border: 1px solid #E1DADA;
+ padding-top: 0.2rem;
+ padding-bottom:  0.2rem;
+ padding-left: 0.1rem;
+ margin-bottom: 0.3rem;
+ margin-top: .3rem;
+ margin-right: .2rem;
+ margin-left: .2rem;
+ text-align: center;
+
+  }
+ .progress .meter {
+   background: #2b9100; /**green color*/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align: center;
+   }
+ .progress.secondary .meter { /***this secondary class is *****/
+   background: transparent;   /**for the normal progressbar**/
+   height: 100%;
+   display: block;
+   padding-left: 10px;
+   padding-bottom:5px ;
+   color:#fff; 
+      text-align: center;
+   }
+ .progress.success .meter {
+   background: #effc00;/**yellow color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#737373;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align: center;
+   }
+ .progress.alert .meter {
+   background: #ff0000;/***red color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+ text-align: center;
+text-align: center;}
+ .progress.radius {
+   -webkit-border-radius: 3px;
+   border-radius: 3px; }
+   .progress.radius .meter {
+     -webkit-border-radius: 4px;
+     border-radius: 4px; }
+ .progress.round {
+   -webkit-border-radius: 1000px;
+   border-radius: 1000px;
+   box-shadow: inset 0 0 5px #E1DADA;text-align: center;
+
+ }
+   .progress.round .meter {
+     -webkit-border-radius: 990px;
+     border-radius: 990px; }
+
+
+
+/* Progress Bar for the tables in dashboard_Eumna*/
+.progressbar {
+ background-color: #B8B3B3;
+ height: 1rem;
+ width: 120px;
+ border: 1px solid #E1DADA;
+ padding-top: 0.2rem;
+ padding-bottom:  0.2rem;
+ padding-left: 0.1rem;
+ margin-bottom: 0.3rem;
+ margin-top: .3rem;
+ margin-right: .2rem;
+ margin-left: .2rem;
+ text-align: center;
+
+  }
+ .progressbar .meter {
+   background: #2b9100; /**green color*/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;text-align: center;
+   }
+ .progressbar.secondary .meter { /***this secondary class is *****/
+   background: transparent;   /**for the normal progressbar**/
+   height: 100%;
+   display: block;
+   padding-left: 10px;
+   padding-bottom:5px ;
+   color:#fff; text-align: center;
+   }
+ .progressbar.success .meter {
+   background: #effc00;/**yellow color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#737373;
+   margin-top: -2px;
+   padding-bottom: 0.2em;text-align: center;
+   }
+ .progressbar.alert .meter {
+   background: #ff0000;/***red color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;text-align: center;}
+ .progressbar.radius {
+   -webkit-border-radius: 3px;
+   border-radius: 3px; }
+   .progressbar.radius .meter {
+     -webkit-border-radius: 4px;
+     border-radius: 4px; }
+ .progressbar.round {
+   -webkit-border-radius: 1000px;
+   border-radius: 1000px;
+   box-shadow: inset 0 0 5px #E1DADA;text-align: center;
+
+ }
+   .progressbar.round .meter {
+     -webkit-border-radius: 990px;
+     border-radius: 990px; }
+
+/* Progress Bar for the tables in dashboard_Eumna*/
+.progresswork {
+ background-color: #B8B3B3;
+ height: 1rem;
+ width: 100px;
+ border: 1px solid #E1DADA;
+ padding-top: 0.2rem;
+ padding-bottom:  0.2rem;
+ padding-left: 0.1rem;
+ margin-bottom: 0.3rem;
+ margin-top: .3rem;
+ margin-right: .2rem;
+ margin-left: .2rem;
+text-align:center; text-align: center;
+
+  }
+ .progresswork .meter {
+   background: #2b9100; /**green color*/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;text-align: center;
+   }
+ .progresswork.secondary .meter { /***this secondary class is *****/
+   background: transparent;   /**for the normal progressbar**/
+   height: 100%;
+   display: block;
+   padding-left: 10px;
+   padding-bottom:5px ;
+   color:#fff; 
+   text-align:center;
+   }
+ .progresswork.success .meter {
+   background: #effc00;/**yellow color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#737373;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;
+   }
+ .progresswork.alert .meter {
+   background: #ff0000;/***red color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;}
+ .progresswork.radius {
+   -webkit-border-radius: 3px;
+   border-radius: 3px; }
+   .progressdash.radius .meter {
+     -webkit-border-radius: 4px;
+     border-radius: 4px; }
+ .progresswork.round {
+   -webkit-border-radius: 1000px;
+   border-radius: 1000px;
+   box-shadow: inset 0 0 5px #E1DADA;
+
+ }
+.progresswork.round .meter {
+     -webkit-border-radius: 990px;
+     border-radius: 990px; }
+/* Progress Bar for the tables in dashboard_Eumna*/
+.progressdash {
+ background-color: #B8B3B3;
+ height: 1rem;
+ width: 80px;
+ border: 1px solid #E1DADA;
+text-align:center; text-align: center;
+
+  }
+ .progressdash .meter {
+   background: #2b9100; /**green color*/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;text-align: center;
+   }
+ .progressdash.secondary .meter { /***this secondary class is *****/
+   background: transparent;   /**for the normal progressbar**/
+   height: 100%;
+   display: block;
+   padding-left: 10px;
+   padding-bottom:5px ;
+   color:#fff; 
+   text-align:center;
+   }
+ .progressdash.success .meter {
+   background: #effc00;/**yellow color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#737373;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;
+   }
+ .progressdash.alert .meter {
+   background: #ff0000;/***red color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   text-align:center;}
+ .progressdash.radius {
+   -webkit-border-radius: 3px;
+   border-radius: 3px; }
+   .progressdash.radius .meter {
+     -webkit-border-radius: 4px;
+     border-radius: 4px; }
+ .progressdash.round {
+   -webkit-border-radius: 1000px;
+   border-radius: 1000px;
+   box-shadow: inset 0 0 5px #E1DADA;
+
+ }
+   .progressdash.round .meter {
+     -webkit-border-radius: 990px;
+     border-radius: 990px; }
+
+/*  css for people table*/
+
+.faq-row {
+  background-color: #fff;
+  border: #ccc 1px solid;
+  margin-bottom: 12px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.faq-row-handle {
+  cursor: pointer;
+  display: block;
+  color: #191919;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 7px 30px 7px 10px;
+  line-height: 20px;
+  text-decoration: none;
+  outline: 0;
+  background-color: #fff;
+}
+
+.faq-row.open .faq-row-handle {
+ color:blue;
+ background-color: #fff;
+}
+
+.faq-row-content {
+  color: #666;
+  font-weight: normal;
+  line-height: 150%;
+  font-size: 13px;
+  display: none;
+}
+
+.faq-row-content p {
+  padding: 0 14px 10px 14px;
+}
+
+img{
+margin-bottom: 0px;
+margin-left: 2px;  
+}
+/** end of collapsible table   **/
+
+/**scrollbar*/
+.wrap {
+    width: 93%;
+    margin-left: 4px;
+}
+.in_table {
+    width: 107.5%;
+    overflow-y: auto;
+    height: 200px;
+    margin-left: -4px;
+
+}
+.wrap table.scrollable_table{
+  background: white;
+  margin-bottom: 0.25rem;
+  border: solid 1px #dddddd;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 9pt;
+ }
+.in_table table.scrollable_table tr.color.od {
+    background: none repeat scroll 0% 0% rgb(249, 249, 249);
+}
+
+.in_table table.scrollable_table tr.color:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+}
+  /**table class with the scrollbar**/  
+.wrap table.out_table {
+    table-layout: fixed;
+    width: 105%;
+    margin-left: -4px;
+}
+/**table class without the scrollbar**/
+
+
+.tablesorter {
+  font-family:arial;
+  background-color: #CDCDCD;
+  margin:10px 0px 15px;
+  font-size: 9pt;
+  width:100%;
+  text-align: left;
+}
+.tablesorter thead tr th, table.tablesorter tfoot tr th {
+  background-color: #e6EEEE;
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  padding: 4px;
+}
+.tablesorter thead tr .header {
+  background-image: url(../images/bg.png);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+.tablesorter tbody tr td {
+  color: #3D3D3D;
+  padding: 4px;
+  background-color: #FFF;
+  vertical-align: top;
+  text-align: left;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.tablesorter tbody tr.odd td {
+  background-color:#F0F0F6;
+}
+.tablesorter thead tr .headerSortUp {
+  background-image: url(../images/asc.png);
+  
+}
+.in_table table.scrollable_table tbody tr :hover td {
+    border: 1px solid #DFEFF7;
+}
+/*Table sorter css*/
+}
+.tablesorter thead tr .headerSortDown {
+  background-image: url(../images/desc.png);
+}
+
+
+
+     /***** Table for Project List *****/
+table.dashP {
+  font-family:arial;
+  background-color: #FFF;
+  margin:10px 0px 15px;
+  font-size: 9pt;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+
+}table.dashP td.dashtd { width: 2%; text-align: center; overflow: hidden;
+  text-overflow:ellipsis;}
+table.dashP thead tr th, table.dashP tfoot tr th {
+  background-color: #E6EEEE;
+  font-size: 8pt;
+  padding: 4px;
+  font-color:#2996CC;
+}
+
+table.dashP tbody.dashBody_p tr td { 
+  color: #3D3D3D;
+  background-color: #F5F5F5;
+  padding: 4px;
+  vertical-align: top;
+  text-align: left;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+tbody tr.dashtr:nth-child(odd) {
+background-color: #F0F0F6 !important ;
+
+}
+
+
+
+tbody tr.dashtr:nth-child(even){
+  background-color: #FFF !important;
+
+}
+/*table.dashP tbody.dashBody_p tr.even td {
+  background-color: #fff;
+  overflow: hidden;
+
+}*/
+table.dashP tbody.dashBody_p tr:hover td {
+background-color: #DFEFF7 !important;
+
+}
+/*Table sorter for MY Work Table css*
+
+.x, any element with a position property set to relative and is a child of       */
+/* an element that has an overflow property set, the relative value translates into fixed.    */
+/* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
+
+/* Copyright 2006 Joost de Valk */
+/****************CAlendaR*/
+
+
+table.calendash {border-collapse: collapse; width: 100%; margin: 0px 0 6px 0;border: 1px solid #d7d7d7;}
+table.calendash thead th {width: 14%; background-color:#EEEEEE; padding: 4px; }
+table.calendash thead th.week-number {width: auto;}
+table.calendash tbody tr {height: 100px;}
+table.calendash td {border: 1px solid #d7d7d7; vertical-align: top; font-size: 0.9em;}
+table.calendash td.week-number { background-color:#EEEEEE; padding: 4px; border:none; font-size: 1em;}
+table.calendash td p.day-num {font-size: 1.1em; text-align:right;}
+table.calendash td.odd p.day-num {color: #bbb;}
+table.calendash td.today {background:#ffffdd;}
+table.calendash td.today p.day-num {font-weight: bold;}
+table.calendash .starting a, p.calendash.legend .starting {background: url(../images/bullet_go.png) no-repeat -1px -2px; padding-left:16px;}
+table.calendash .ending a, p.calendash.legend .ending {background: url(../images/bullet_end.png) no-repeat -1px -2px; padding-left:16px;}
+table.calendash .starting.ending a, p.calendash.legend .starting.ending {background: url(../images/bullet_diamond.png) no-repeat -1px -2px; padding-left:16px;}
+p.calendash.legend span {display:block;}
+
+
+/**************Scrollbar with fixed header
+ for 6 columns for working issue/task table**************************/
+/*Edited by shumana*/
+
+  table.tableWork {
+        display: table;
+        width: 100%;
+        background-color: #FFFFFF;
+    }
+    table.tableWork thead, table.tableWork tbody.wrkbdy {
+        float: left;
+        width: 100%;
+    }
+    table.tableWork tbody.wrkbdy {
+        overflow: auto;
+        /* Giving height to make the tbody scroll */
+        /* Giving height dynamically is recommended */
+        height: 231px;
+        background-color: #E6EEEE;
+    }
+    table.tableWork tr {
+        width: 100%;
+        display: table;
+        /* Keeping the texts of both thead and tbody in same alignment */
+        text-align: left;
+         
+    }
+    table.tableWork th {
+     background-color:  #E6EEEE;
+    
+    }
+    table.tableWork tr>th:first-child + th {
+     width:23%;
+    
+    }
+    
+     
+     table.tableWork tr>th:first-child + th + th + th {
+     width:20%;
+    
+    }
+    table.tableWork tr>th:first-child + th + th + th + th {
+     width: 17%;
+    
+    }
+    table.tableWork tr>th:first-child + th + th + th + th + th {
+     width:20%;
+    
+    }
+
+/*table.tableWork tbody tr.odd td {
+    background-color:#F0F0F6;
+    }*/
+table.tableWork tbody.wrkbdy tr td {
+     display: inline-block;
+    overflow: hidden;
+    padding: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 4%;
+   
+    }
+    table.tableWork tr>td:last-child {
+        /* removing fraction of width i.e 2% to align the tbody columns with thead columns. */
+        /* It is must as we need to consider the tbody scroll width too */
+        /* if the width is in pixels, then (width - 18px) would be enough */
+    width: 16%;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: inline-block;
+    padding: 4px;
+    }
+    /** for older browsers (IE8), if you know number of columns in your table **/
+
+     table.tableWork tr>td:first-child + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        padding-left: 2%;
+        text-overflow: ellipsis;
+        white-space: normal;
+        width: 23%;
+    }
+
+    table.tableWork tr>td:first-child + td + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 9%;
+    }
+    table.tableWork tr>td:first-child + td + td + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        padding-left: 4%;
+        text-overflow: ellipsis;
+        white-space: normal;
+        width: 19%;
+    }
+
+ table.tableWork tr>td:first-child + td + td + td + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        padding-left: 2%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 14%;
+    }
+ table.tableWork tr>td:first-child + td + td + td + td + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        padding-left: 2%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 12%;
+    }
+ table.tableWork tr>td:first-child + td + td + td + td + td + td {
+        display: inline-block;
+        overflow: hidden;
+        padding: 4px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 12%;
+    }
+     /*Edited by shumana*/
+    /*********Scrollbar ends here***********/
+
+
+/***Scrollbar that is working!! with header Fixed in the issue table_Eumna&Jannat**/
+
+
+
+  table.tableSection {
+        display: table;
+        width: 100%;
+        background-color: #FFFFFF;
+    }
+    table.tableSection thead, table.tableSection tbody.scbdy {
+        float: left;
+        width: 100%;
+    }
+    table.tableSection tbody.scbdy {
+        overflow: auto;
+        /* Giving height to make the tbody scroll */
+        /* Giving height dynamically is recommended */
+        height: 231px;
+        background-color: #E6EEEE;
+    }
+    table.tableSection tr {
+        width: 100%;
+        display: table;
+        /* Keeping the texts of both thead and tbody in same alignment */
+        text-align: left;
+         
+    }
+    table.tableSection th {
+     background-color:  #E6EEEE;
+    
+    }
+table.tableSection thead tr>th:last-child {
+     width: 19%;
+    
+    }
+    table.tableSection thead tr>th:first-child + th {
+     width: 26%;
+    
+    }
+    table.tableSection thead tr>th:first-child + th + th  {
+     width: 26%;
+    
+    }
+     table.tableSection thead tr>th:first-child + th + th  + th {
+     width: 13%;
+    
+    }
+
+    table.tableSection tbody.scbdy tr td {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 5%;
+    padding: 4px;
+   
+    }
+    table.tableSection tr>td:last-child {
+        /* removing fraction of width i.e 2% to align the tbody columns with thead columns. */
+        /* It is must as we need to consider the tbody scroll width too */
+        /* if the width is in pixels, then (width - 18px) would be enough */
+    width: 13%;
+ 
+    }
+    /** for older browsers (IE8), if you know number of columns in your table **/
+    table.tableSection tr>td:first-child + td {
+     width : 25%;
+     white-space:nowrap;
+     text-overflow:ellipsis;
+     overflow:hidden;
+     display: inline-block;
+     padding: 4px;
+    }
+    table.tableSection tr>td:first-child + td + td {
+     width : 26%;
+     white-space:nowrap;
+     text-overflow:ellipsis;
+     overflow:hidden;
+     display: inline-block;
+     padding: 4px;
+    }
+    table.tableSection tr>td:first-child + td + td + td {
+     width :12%;
+     white-space:nowrap;
+     padding: 4px;
+    }
+    table.tableSection tr>td:first-child + td + td + td + td {
+     width :11%;
+     padding: 4px;
+    }
+      table.tableSection tr>td:first-child + td + td + td + td + td {
+     width :13%;
+     padding: 4px;
+    }
+
+
+
+
+    /*********Scrollbar ends here***********/
+    /*********Scrollbar ends here***********/
+    /************Scrollbar in files table***********************/
+
+  table.tableFiles {
+        display: inline-block;
+        width: 100%;
+        background-color: #FFFFFF;
+    }
+    table.tableFiles thead, table.tableFiles tbody.flbdy {
+        float: left;
+        width: 100%;
+    }
+    table.tableFiles tbody.flbdy {
+        overflow: auto;
+        overflow-x:hidden;
+        /* Giving height to make the tbody scroll */
+        /* Giving height dynamically is recommended */
+        height: 231px;
+        background-color: #E6EEEE;
+    }
+    table.tableFiles tr {
+        width: 100%;
+        display: table;
+        /* Keeping the texts of both thead and tbody in same alignment */
+        text-align: left;
+         
+    }
+    table.tableFiles th {
+     background-color:  #E6EEEE;
+    
+    }
+
+  table.tableFiles thead tr>th:first-child   {
+     width: 61%;
+    
+    }
+
+ 
+     
+    table.tableFiles thead tr>th:first-child + th  {
+     width: 30%;
+    
+    }
+
+    table.tableFiles tbody.flbdy tr td {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 66%;
+    padding: 4px;
+   
+    }
+    /** for older browsers (IE8), if you know number of columns in your table **/
+    table.tableFiles tr>td:first-child + td {
+     width : 27%;
+     white-space:nowrap;
+     text-overflow:ellipsis;
+     overflow:hidden;
+     display: inline-block;
+     padding: 4px;
+    }
+   
+    /********************************Scrollbar Ends here*/
+a img {
+  border: 0;
+}
+
+
+table.sortable{
+   border: 0px solid #fff; font-size: 14px; border-collapse: collapse; width: 100%; margin-bottom: 4px;
+}
+table.sortable thead tr th{
+  background-color:#fff; padding: 4px; white-space:nowrap;
+}
+table.sortable tbody td {
+  text-align:center; vertical-align:top; padding-right:10px;
+}
+table.sortable tbody td.id { width: 2%; text-align: center;}
+table.sortable tbody td.name, table.sortable tbody td.description, table.sortable tbody td.subject, table.sortable tbody td.comments {text-align: left;}
+
+
+
+/* tab css */
+.clear { clear: both;}
+/*----- Tabs -----*/
+.tabs-dash {
+    width:100%;
+    display:inline-block;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            margin-bottom:-15px;
+            margin-left:-4px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#7FB5DA;
+            font-size:12px;
+            font-weight:600;
+            color:#4c4c4c;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#a7cce5;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#717171;
+        /*color:#4c4c4c;*/
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        
+        padding:0px; 
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }

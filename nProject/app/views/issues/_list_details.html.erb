@@ -1,0 +1,80 @@
+<%#= tasks.inspect %>
+<div class="autoscroll">
+  <table cellspacing='0' class="list_detail">
+    <thead><tr>
+      <th>#</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Attachment</th>
+      <th>Assignee</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Estimated</th>
+      <th>Spent</th>
+      <th>Related</th>
+    </tr></thead>
+    <tbody>
+    <% tasks.reverse.each do |task| %>
+      <tr class=" <%= cycle("odd", "even") %>">
+        <td>
+          <%= link_to task.project_issue_id, issue_path(task) %>
+        </td>
+        <td>
+          <%= link_to task.subject,  issue_path(task) %> (<%=h task.status %>)
+        </td>
+        <td>
+        	<% if task.description? || task.attachments.any? -%>
+            <% if task.description? %>
+              <div class="description">
+                <div class="wiki">
+                  <%= textilizable task, :description, :attachments => task.attachments %>
+                </div>
+              </div>
+            <% end %>
+          <% end -%>
+        </td>
+        <td>
+          <% if task.attachments.any? %>
+        	  <%= link_to_attachments task, :thumbnails => true %>
+          <% end %>
+        </td>
+        <td>
+          <%= task.assigned_to %>
+        </td>
+        <td>
+          <%= format_date(task.due_date)  %>
+        </td>
+        <td>
+          <%= progress_bar(task.done_ratio, :width => '80px', :legend => "#{task.done_ratio}%", class: "progress") %>
+        </td>
+        <td>
+          <%= task.priority.name %>
+        </td>
+        <td>
+          <%= l_hours(task.estimated_hours) %>	
+        </td>
+        <td>
+          <%= l_hours(task.total_spent_hours) %>
+        </td>
+        <td>
+          <% @relations = relation_special(task) %>
+         <%#= @relations.inspect %>
+
+          <% if @relations.present? %>
+           <ul style="list_style:none;">
+            <% @relations.each do |relation| %>
+              <% other_issue = relation.other_issue(task) -%>
+              <%#= l(relation.label_for(task)) %>
+              <%#= "(#{l('datetime.distance_in_words.x_days', :count => relation.delay)})" if relation.delay && relation.delay != 0 %>
+             <li> <%#= h(other_issue.project) + ' - ' if Setting.cross_project_issue_relations? %>
+              <%= link_to_issue(other_issue, :truncate => 60) %></li>
+            <% end %>
+          <% end %>
+          </ul>
+        </td>
+      </tr>	
+    <% end %>
+    </tbody>
+  </table>
+</div>

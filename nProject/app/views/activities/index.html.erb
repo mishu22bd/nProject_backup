@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <%= stylesheet_link_tag :"screen.css" %>
+  <%= stylesheet_link_tag :"responsive.css" %>
+  <%= stylesheet_link_tag :"colorbox.css" %>
+</head>
+<body>
+
+<div class="container">
+  <h1><%#= @author.nil? ? l(:label_audit) : l(:label_user_activity, link_to_user(@author)).html_safe %>
+  </h1>
+  <%# date_from = [] %>
+  <% date_from = Issue.where(project_id: @project.id).pluck(:start_date).first %>
+  <% date_to = Issue.where(project_id: @project.id).pluck(:start_date).last %>
+  <span class="marker"><span class="dot"></span></span>
+
+  <p class="lead" style="margin-top:70px; float:left;"><%= l(:label_date_from_to, :start => format_date(date_from), :end => format_date(date_to)) %>
+  </p>
+
+
+  <div id="timelineContainer" class="timelineContainer">
+    <div class="timelineToggle" style="font-weight:bold; font-size:18"><p><a class="expandAll"> + Expand all </a></p>
+    </div>
+
+    <% @journals.each do |journal| %>
+        <% user = User.find(journal.issue.assigned_to_id).full_name %>
+        <div class="timelineMajor">
+
+              <% if journal.issue.tracker_id == 5 %>
+                  <dt id="19540517">
+                  <h4><%= link_to "Issue # #{journal.issue.project_issue_id} ( #{journal.issue.status} ) #{journal.issue.subject} Assigned to #{user}", issue_path(journal.issue.id) %></h4>
+                  </dt>
+
+              <% else %>
+                  <dt id="19540517">
+                  <h4><%= link_to "Issue # #{journal.issue.project_issue_id} ( #{journal.issue.status} ) #{journal.issue.subject} Assigned to #{user}", issue_path(journal.issue.id) %></h4>
+                  </dt>
+              <% end %>
+
+          <dt id="19540517" class="timelineEvent" style="display:none;">
+          <table class="audit">
+            <tr>
+              <td>
+                <div id="pic" style="margin-top:2px; float:left">
+                </div>
+              </td>
+            </tr>
+
+            
+            <tr>
+              <td>
+              <%= avatar(journal.user, :size => "24") %>
+              Updated by: <%= journal.user.full_name %> at
+                <%= journal.issue.updated_on.strftime("%B %d, %Y - %I:%M:%S %p") %>   
+              </td>
+            </tr>
+
+           
+
+            <tr>
+              <td>
+               <% if journal.notes.present? %>
+              Note :
+                <%= journal.notes %>
+                <% end %>
+                <% if journal.details.any? %>
+                    <ul class="details">
+                      <% details_to_strings(journal.visible_details).each do |string| %>
+                          <li><%= string %></li>
+                      <% end %>
+                    </ul>
+                <% end %>
+              </td>
+            </tr>
+
+          </table>
+
+
+          <!-- /.timelineMinor --><!-- /.timelineEvent -->
+          </dt>
+
+
+        </div>
+        <!-- /.timelineMajor -->
+
+    <% end %>
+
+
+    <!-- GLOBAL CORE SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <%= javascript_include_tag :"colorbox.js" %>
+    <%= javascript_include_tag :"timeliner.min.js" %>
+
+    <script>
+        $(document).ready(function () {
+            $.timeliner({
+                startOpen: ['#19540517', '#19540517']
+            });
+            $.timeliner({
+                timelineContainer: '#timelineContainer_2'
+            });
+            // Colorbox Modal
+            $(".CBmodal").colorbox({inline: true, initialWidth: 200, maxWidth: 682, initialHeight: 200, transition: "elastic", speed: 750});
+        });
+
+    </script>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+

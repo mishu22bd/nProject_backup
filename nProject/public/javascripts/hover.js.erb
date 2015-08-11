@@ -1,0 +1,74 @@
+$(document).ready(function(){
+	$("#normalImage1").hover(function(){ 
+
+		$(this).attr({ src: "<%= asset_path 'attend_ovr.png' %>" });
+	}, function(){
+	$(this).attr({ src: "<%= asset_path 'attend_nrm.png' %>"});
+	
+	});
+	});
+
+$(document).ready(function(){
+	$("#normalImage2").hover(function(){
+		$(this).attr({ src: "<%= asset_path 'setup_ovr.png' %>"});
+	}, function(){
+	$(this).attr({ src: "<%= asset_path 'setup_nrm.png' %>" });
+	
+	});
+	});
+	
+	$(document).ready(function(){
+	$("#normalImage3").hover(function(){
+		$(this).attr("src", "image/work_ovr.png");
+	}, function(){
+	$(this).attr("src", "image/work_nrm.png");
+	
+	});
+	});
+	
+	$(document).ready(function(){
+	$("#normalImage4").hover(function(){
+		$(this).attr("src", "image/calendar_ovr.png");
+	}, function(){
+	$(this).attr("src", "image/calendar_nrm.png");
+	
+	});
+	});
+	$(document).ready(function(){
+	$("#normalImage5").hover(function(){
+		$(this).attr("src", "image/settings_ovr.png");
+	}, function(){
+	$(this).attr("src", "image/settings_nrm.png");
+	
+	});
+	});
+	$(document).ready(function(){
+	$("#normalImage6").hover(function(){
+		$(this).attr("src", "image/learn_ovr.png");
+	}, function(){
+	$(this).attr("src", "image/learn_nrm.png");
+	
+	});
+	});
+	
+	$(document).ready(function(){
+	$("#normalImage7").hover(function(){
+		$(this).attr({ src: "<%= asset_path('setup_acc_ovr.png') %>" });
+	}, function(){
+	$(this).attr({ src: "<%= asset_path('setup_acc_nrm.png') %>"});
+	
+	});
+	});
+	
+	
+	$(document).ready(function(){
+	$("#normalImage8").hover(function(){
+		$(this).attr({ src: "<%= asset_path 'login_ovr.png' %>"});
+
+	}, function(){
+	$(this).attr({ src: "<%= asset_path 'login_nrm.png' %>"});
+
+	
+	});
+	});
+	

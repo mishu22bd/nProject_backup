@@ -1,0 +1,40 @@
+<!-- Author: M Rezaur Rahman -->
+
+<h1> Edit Permission  </h1>
+<%= form_tag  update_multiple_fileusers_path, :method => :put do %>
+  
+	<% for fileuser in @fileusers %>
+
+
+      <%= fields_for "fileusers[]", fileuser do|f| %>
+
+        <h2><% u_id = fileuser.user_id %></h2>
+        <% userFirstnames = User.where(:id => u_id).pluck(:firstname) %>
+        <% for uf in userFirstnames %>
+        <strong><%= uf %></strong>
+        <% end %>
+        <% userLastnames = User.where(:id => u_id).pluck(:lastname) %>
+
+        <% for ul in userLastnames %>
+        <strong><%= ul %></strong>
+        <% end %>
+        
+
+        <%= render "fields", :f =>f %>
+        <% end %>
+        <% end %>
+
+
+
+        <%= submit_tag "Submit" %>
+
+
+
+<% end %>
+
+
+
+
+
+
+

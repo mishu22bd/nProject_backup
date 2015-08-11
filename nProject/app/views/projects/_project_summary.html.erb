@@ -1,0 +1,154 @@
+<%= javascript_include_tag :"highcharts.js" %>
+<%= javascript_include_tag :"drilldown.js" %>
+
+
+
+<%#= raw @counts %>
+<div id="container_project" style="min-width: 310px; height: 350px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+  
+  $(function () {    
+
+    // Create the chart
+    $('#container_project').highcharts({
+        chart: {
+            type: 'column',
+            events: {
+                drilldown: function (e) {
+                    if (!e.seriesOptions) {
+                        
+                        var chart = this,
+                            drilldowns = {
+                                'New Issues': {
+                                    name: 'New',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @nIssueCounts.map {|k, v| %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @nIssueCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                },
+                                'In Progress Issues': {
+                                    name: 'In Progress',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @pIssueCounts.map {|k, v| %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @pIssueCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                },
+                                'Complete Issues': {
+                                    name: 'Completed',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @cIssueCounts.map {|k, v| %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @cIssueCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                },
+                                'New Tasks': {
+                                    name: 'New',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @nTaskCounts.map {|k, v|  %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @nTaskCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                },
+                                'In Progress Tasks': {
+                                    name: 'In Progress',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @pTaskCounts.map {|k, v| %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @pTaskCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                },
+                                'Complete Tasks': {
+                                    name: 'Completed',
+                                    data: [
+                                        <% i = 1 %>
+                                        <%  @cTaskCounts.map {|k, v| %>
+                                        <%= raw [k.firstname.to_s , v] %> <%= "," if i < @cTaskCounts.length %>
+                                        <% i+=1 %>
+                                        <% } %>
+                                    ]
+                                }
+                            },
+                            series = drilldowns[e.point.name];
+                        
+                        // Show the loading label
+                        chart.showLoading('loading ...');
+
+                        setTimeout(function () {
+                            chart.hideLoading();
+                            chart.addSeriesAsDrilldown(e.point, series);
+                        }, 1000);
+                    }
+
+                }
+            }
+        },
+        title: {
+            text: 'Project Summary'
+        },
+        xAxis: {
+            type: 'category'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                }
+            }
+        },
+
+        series: [{
+            name: 'SUMMARY',
+            colorByPoint: true,
+            data: [{
+                name: 'New Issues',
+                y: <%= @nIssues.count %>,
+                drilldown: true
+            }, {
+                name: 'In Progress Issues',
+                y: <%= @pIssues.count %>,
+                drilldown: true
+            }, {
+                name: 'Complete Issues',
+                y: <%= @cIssues.count %>,
+                drilldown: true
+            },{
+                name: 'New Tasks',
+                y: <%= @nTasks.count %>,
+                drilldown: true
+            },{
+                name: 'In Progress Tasks',
+                y: <%= @pTasks.count %>,
+                drilldown: true
+            },{
+                name: 'Complete Tasks',
+                y: <%= @cTasks.count %>,
+                drilldown: true
+            }]
+        }],
+
+        drilldown: {
+            series: []
+        }
+    })
+});
+    
+</script>

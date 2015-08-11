@@ -1,0 +1,356 @@
+<h4 style="background-color: #ccc; padding-left:5px;"><%= @project %></h4>
+<% cDate = @project.created_on.to_date %>
+<% sDate = Date.parse(@project.visible_custom_field_values.to_s) %>
+<% pDate = sDate.strftime("%B %d, %Y") %>
+<%# year1, month1, day1 = cDate.split("-") %>
+<% dif = sDate.mjd - cDate.mjd %>
+<% tDate = Date.today %>
+<%#= dif.split('/') %>
+<% if tDate <= sDate %>
+<% lDate = tDate.mjd - cDate.mjd %>
+<%#= "true" %>
+<% else %>
+<% lDate = 0 %>
+<% end %>
+<%#= cDate - sDate %>
+<% pta = [] %>
+<% pia = [] %>
+<% opta = [] %>
+<% cpta = [] %>
+<% opia = [] %>
+<% cpia = [] %>
+
+        <% opIssues = Issue.where(project_id: @project.id, status_id: [1,2], :tracker_id => 5) %>
+
+        <% cloIssues = Issue.where(project_id: @project.id, status_id: 5, :tracker_id => 5) %>
+
+        <% opTasks = Issue.where(project_id: @project.id, status_id: [1,2], :tracker_id => 4) %>
+
+        <% cloTasks = Issue.where(project_id: @project.id, status_id: 5, :tracker_id => 4) %>
+        <% allTask = Issue.where(project_id: @project.id, status_id: [1,2,5], :tracker_id => 4 ) %> 
+        <% allIssue = Issue.where(project_id: @project.id, status_id: [1,2,5], :tracker_id => 5 ) %>  
+
+        <% spent_times =  TimeEntry.sum(:hours, :conditions =>{project_id: @project.id}).to_f.round(1) %> 
+
+<table class="list files">
+  <thead>
+  <tr>
+    
+    <th rowspan="2"><b> <%= "Due Date" %> </b></th>
+    <th rowspan="2"><b> <%= "Status " %> </b></th>
+
+    <!--<td><b><%#= "Progress" %></b></td>-->
+    
+    <th colspan="2"> Tasks  </th>
+    <th colspan="2"> Issues </th>
+    <th colspan="3"> Time </th>
+    <th rowspan="2"> Late</th>
+  </tr>
+ <tr bgcolor="#eaeaea">
+   
+    <!--<td><b><%#= "Progress" %></b></td>-->   
+    <th><b><%= "Open" %></b></th>
+    <th><b><%= "Comp." %></b></th>
+
+    <th><b><%= "Open" %></b></th>
+    <th><b><%= "Comp." %></b></th>
+
+    <th><b><%= "Spent" %></b></th>
+    <th><b><%= "Est." %></b></th>
+    <th><b><%= "Burn" %></b></th>
+  </tr>
+</thead>
+
+    
+
+
+
+        <!--rejecting parent ID's form child-->
+        <% opIssues.each do |o|  %>
+        <% if o.parent_id? %>
+        <% opia << o.parent_id %>
+        <% end %>
+        <% end %>
+        
+
+        <% opIssues = opIssues.reject {|s| opia.uniq.include? s.id }.count %>
+
+        <% cloIssues.each do |c|  %>
+        <% if c.parent_id? %>
+        <% cpia << c.parent_id %>
+        <% end %>
+        <% end %>
+        <% cloIssues = cloIssues.reject {|s| cpia.uniq.include? s.id }.count %>
+        
+        <% opTasks.each do |o|  %>
+        <% if o.parent_id? %>
+        <% opta << o.parent_id %>
+        <% end %>
+        <% end %>
+
+        <% opTasks = opTasks.reject {|s| opta.uniq.include? s.id }.count %>
+
+        <% cloTasks.each do |c|  %>
+        <% if c.parent_id? %>
+        <% cpta << c.parent_id %>
+        <% end %>
+        <% end %>
+
+        <% cloTasks = cloTasks.reject {|s| cpta.uniq.include? s.id }.count %>
+
+        <!--start of project status calculation by OPU-->
+
+        
+        <% allTask.each do |t|  %>
+          <% if t.parent_id? %>
+            <%#code opu%>
+            <%# if pta.include(t.parent_id)? %>
+            <%# else donePercentageTask += t.parent_id.done_ratio %>
+            <%# end %> <%# end of if-else %>
+            <%#end of code opu%>
+          <% pta << t.parent_id %>
+          <%# else donePercentageTask += t.done_ratio%>
+          <% end%>
+        <% end %> <%# end of do %>
+        <%#= pta.uniq %>
+
+        <% allTask = allTask.reject {|s| pta.uniq.include? s.id  } %>
+       
+        
+
+        <% aT = allTask.count %>
+        <% estimated_times_tasks = 0 %>
+        <% donePercentageTask =0 %>
+        <% allTask.each do |t| %>
+          <% donePercentageTask += t.done_ratio %>
+          <% estimated_times_tasks += t.estimated_hours.to_f %>
+          <%#= t.estimated_hours %>
+        <% end %>
+        
+        <% allIssue.each do |i|  %>
+          <% if i.parent_id? %>
+            <%#code opu %>
+            <%#if pia.include(i.parent_id)? %>
+            <%#else donePercentageIssue += i.done_ratio %>
+            <%#end %> <%# end of if-else%>
+            <%#end of code opu%>
+          <% pia << i.parent_id %>
+          <%# else donePercentageIssue += i.done_ratio %>
+          <% end %> <%# end of if-else%>
+        <% end %> <%# end of do%>
+        <% allIssue = allIssue.reject {|s| pia.uniq.include? s.id  } %>
+        <% aI = allIssue.count %>
+        
+        <% donePercentageIssue = 0 %>
+        <% estimated_times_issues = 0 %>
+        <% allIssue.each do |t| %>
+          <% donePercentageIssue += t.done_ratio %>
+          <% estimated_times_issues += t.estimated_hours.to_f %>
+        <% end %>      
+       
+       <% estimated_times = (estimated_times_issues + estimated_times_tasks).to_f %>
+       <!--progress calculation by opu-->
+        <% taskProgress = 0 %>
+        <% issueProgress = 0 %>
+
+        <% if aT!= 0 %>
+        <% taskProgress = (donePercentageTask)/aT %>
+        
+        <% end %>
+        <% if aI!= 0 %>
+        <% issueProgress = (donePercentageIssue)/aI %>
+         
+        <%#= issueProgress %>
+        <% end %>
+        <%# progress = 0 %>
+        <%# if aT!= 0 && aI!= 0 %>
+          <% progress = (taskProgress*0.75 + issueProgress*0.25).ceil %>
+        <%# elsif aT!=0 %>
+        <%# progress = 0 %>
+        <%# elsif aI!=0 %>
+        <%# progress = 0 %>
+        <%# end %>
+
+
+        <% dueTask = 0 %> 
+        <%# pt = 0 %>
+        <%# ptl = 0 %>
+        <% allTask.each do |t|  %>
+         <%# if t.parent_id? %>
+        <%# pta << t.parent_id %>
+        <%# pt+= 1 %>
+        <%# elsif  !t.parent_id? %>
+        <%# ptl+= 1 %>
+        <%# end %>
+        <% if t.due_date? && t.due_date < t.updated_on.to_date  %>
+       
+ 
+        <% dueTask += 1 %>
+       
+        <% end %>
+        <% end %>
+       
+        <% dueIssue = 0 %> 
+        <% allIssue.each do |i|  %>
+        <% if i.due_date? && i.due_date < i.updated_on.to_date %>
+        <% dueIssue+= 1 %>
+        <% end %>
+        <% end %>
+  
+<%#= pt %>
+
+  <!--progress %-->
+      <%# if aT != 0 %>
+      <%# ct =  cloTasks.to_f/aT  %>  
+      <%# else %> 
+      <%# ct =  0  %>  
+      <%# end %>
+      <%# ctp = (ct*0.75)*100 %>  
+     <%# if aI != 0 %>
+      <%# ci = cloIssues.to_f/aI  %>
+     <%# else %> 
+      <%# ci =  0  %>  
+      <%# end %>
+      <%# cip = (ci*0.25)*100  %>
+      <%# progress = (ctp + cip).ceil %>
+     <%#= burn(300, 120) %>
+<!-- late % calculation by sukanta-->
+      <% if aT != 0 %>
+       <% rt =  dueTask.to_f/aT  %>    
+        <% else %> 
+       <% rt =  0  %>  
+      <% end %>
+
+      <% rtl = (rt*0.75)*100 %>  
+       <% if aI != 0 %>
+       <% ri = dueIssue.to_f/aI  %>
+       <% else %> 
+      <% ri =  0 %>  
+      <% end %>
+      <% ril = (ri*0.25)*100  %>
+      <% late = (rtl + ril).ceil %>
+ 
+<tbody class="dashBody_p">
+   <tr class="file <%= cycle("odd", "even") %>">
+    
+    <td>
+     <%= pDate %>
+   </td>
+
+
+
+    <td ><b>
+      <% if late.between?(0, 15) %>
+      <%#= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '22x22' %> 
+       
+      <div class="nice round progress large-6"> 
+      <span class="meter" style="width: <%= progress %>%"><%= progress %>%</span> 
+      </div>
+
+      <% elsif late.between?(16, 60)  %>
+
+       <div class="nice round progress success large-10"> 
+      <span class="meter" style="width: <%= progress %>%"><%= progress %>%</span> 
+      </div>
+
+      <%#= image_tag '/plugin_assets/imeetdashboard/images/red.jpg', :size  => '22x22' %> 
+      
+      <% elsif late.between?(61, 100) %>
+
+       <div class="nice round progress alert large-10"> 
+      <span class="meter" style="width: <%= progress %>%"><%= progress %>%</span> 
+      </div>
+
+<%#= image_tag '/plugin_assets/imeetdashboard/images/yellow.jpg', :size  => '22x22'  %>
+
+
+<%end %>
+</td>
+
+<td> <%= opTasks %>
+</td>
+<td> <%=  cloTasks %>
+</td>
+
+<td>
+
+
+      <%#= link_to opIssues, project_issues_path(project, :status_id => 'o', :set_filter => 1, :tracker_id => 5) %>
+    <%=  opIssues %> 
+</td>
+
+
+<td>
+
+
+      <%#= link_to cloIssues, project_issues_path(project, :status_id => 'c', :set_filter => 1, :tracker_id => 5) %>
+      <%= cloIssues %>
+</td>
+    
+
+  
+
+<td><%= spent_times %> </td>
+<td><%= estimated_times %> </td>
+
+
+<td>
+<% if estimated_times != 0 %>
+<%= burn = ((spent_times*100)/estimated_times).ceil %>%
+<% else %>
+<%= burn = 0 %>%
+<% end %>
+</td>
+<td><%= late %>%</td>
+
+</tbody>
+
+</table>
+
+<table class="list files">
+ <thead>
+  <tr>
+    
+    
+    <!--<td><b><%#= "Progress" %></b></td>-->
+    
+    <th colspan="3"> Open vs Total  </th>
+    <th colspan="3"> Open (Issues vs Task) </th>
+    <th colspan="3"> Project Status vs Exp. Dutation </th>
+    
+  </tr>
+ <tr bgcolor="#eaeaea">
+   
+   
+
+    <th><b><%= "Open" %></b></th>
+    <th><b><%= "Total" %></b></th>
+    <th><b><%= "Ratio" %></b></th> 
+    
+    <th><b><%= "Issues" %></b></th>
+    <th><b><%= "Tasks" %></b></th>
+    <th><b><%= "Ratio" %></b></th>
+
+    <th><b><%= "Status" %></b></th>
+    <th><b><%= "Duration" %> </b></th>
+    <th><b><%= "Diff" %> </b></th>
+  </tr>
+</thead>  
+<tbody>
+    <% open = opIssues + opTasks %>
+    <% total = aI + aT %>
+    <% duraton = ((lDate*100)/dif).round  %>
+    <% diff = duraton - progress %>
+     <tr class="file <%= cycle("odd", "even") %>">
+  <td><%= open %></td>
+  <td><%= total %></td>
+  <td><%= ((open*100)/(total == 0 ? 1 : total)).ceil %>%</td>
+  <td><%= opIssues %></td>
+  <td><%= opTasks %></td>
+  <td> <%= ((opIssues*100)/(opTasks == 0 ? 1 : opTasks)).round %>%</td>
+  <td><%= progress %>%</td>
+  <td><%= duraton %>%</td>
+  <td><%= diff %>%</td>
+  </tr>
+</tbody>
+</table>

@@ -1,0 +1,28 @@
+<!-- Author: M Rezaur Rahman -->
+
+
+<h2> <% filenames = Attachment.where(id: params[:f_id]).pluck(:filename) %>
+	<% for filename in filenames %>
+	<%= filename %>
+	<% end %>
+	
+
+
+</h2>
+<%= form_for(Attachment.find(params[:f_id])) do |f| %>
+  <div class="field">
+<strong> Description:</strong>   <%= f.text_field :description %>
+  </div>
+  <br />
+ 
+
+
+
+  <div class="actions">
+    <%= f.submit 'Update' %>
+  </div>
+<% end %>
+
+
+
+<!-- end of file -->

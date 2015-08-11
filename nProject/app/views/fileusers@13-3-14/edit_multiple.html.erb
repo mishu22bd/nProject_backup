@@ -1,0 +1,25 @@
+<!-- Author: M Rezaur Rahman -->
+
+<h1> Edit Permission  </h1>
+<%= form_for :fileuser, :url => update_multiple_fileusers_path, :html => {:method => :put} do |f| %>
+  
+	<% for fileuser in @fileusers %>
+		<%= hidden_field_tag "fileuser_ids[]", fileuser.id %>
+	<% end %>
+	
+			
+
+  <div class="field">
+    <% f.label :permission_flag %>
+    <br />
+    
+    <%= f.radio_button :permission_flag, 1 %><%= "Can View" %>
+    <br />
+    <%= f.radio_button :permission_flag, 0 %><%= "Can't View" %>
+    
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

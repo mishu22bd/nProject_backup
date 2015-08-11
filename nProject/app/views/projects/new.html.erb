@@ -1,0 +1,17 @@
+
+<% if params[:company_id] != nil %>
+  <% companies_id = params[:company_id] %>
+<% else %>
+  <% companies_id = User.current.companies_id  %>
+<% end %>
+<%= title l(:label_project_new) %>
+
+<%= labelled_form_for @project do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+<%= f.hidden_field :companies_id, :value => companies_id %>
+
+<%#= f.hidden_field :companies_id, :value => User.current.companies_id %>
+<%= submit_tag l(:button_create) %>
+<%= submit_tag l(:button_create_and_continue), :name => 'continue' %>
+<%= javascript_tag "$('#project_name').focus();" %>
+<% end %>

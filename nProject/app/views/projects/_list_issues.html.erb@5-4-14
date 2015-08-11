@@ -1,0 +1,93 @@
+
+         <% @today = Date.today %>
+         <% @nextday = Date.today+1 %>
+ <%#= (@nextday.to_date - @today.to_date).to_i %>
+<%# @today = time.strftime("%B %d, %Y") %>
+
+        <% if @myIssues.count==0 %>
+<br />
+<%= "There is no issue assigned to you " %>
+
+<% else %>
+<table class="list files">
+  <tr bgcolor="#eaeaea">
+    <td class="filename"><b><%= "Issue" %></b></td>
+   
+    
+    
+   <!-- <td class="filename"><b><%#= "Priority" %></b></td> -->
+    <td class="filename"><b><%= "Status" %></b></td>
+    <td class="filename"><b><%= "Progress" %></b></td>
+    <td class="filename"><b><%= "Last Updated" %></b></td>
+
+
+
+  </tr>
+
+<% count = 0 %>
+<% for i in @myIssues %>
+    <%# next if i.status_id == 5 %>
+    <%# break  if count>4 %>
+    <tr class="file <%= cycle("odd", "even") %>">
+    <td class="filename" ><%#= link_to_issue  i %>
+    <%= link_to truncate(i.subject.capitalize, :length => 60), issue_path(i) %> <!--(<%=h i.status %>) -->
+    </td>
+    
+
+    
+   <!-- <td >
+    <%# if i.priority_id == 1 %>
+        <%#="Low"%>
+    <%#  elsif i.priority_id ==2 %>
+        <%#= "Normal" %>
+     <%#   elsif i.priority_id==3 %>
+        <%#= "High" %>
+      
+     <%# elsif i.priority_id ==4 %>
+        <%#= "Urgent" %>
+     <%# else %>
+     <%#= "Immediate" %>
+     
+     <%# end %>
+ </td> -->
+    
+   
+  <% if i.due_date!= nil %>
+  <% sub_date = -(Date.today - i.due_date).to_i  %>
+  <% end %>
+  <% status = i.status.to_s %>
+    <td> 
+     <% if sub_date!= nil && sub_date < 0 && status != "Closed" %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/red.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date < 0 && status == "Closed" %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date >= 2   %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date == 1 && i.done_ratio <= 80  %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/yellow.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date == 1 && i.done_ratio >= 80  %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date == 0 && i.done_ratio != 100 %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/red.jpg', :size  => '22x22' %> 
+     <% elsif sub_date!= nil && sub_date == 0 && i.done_ratio == 100 %>
+          <%= image_tag '/plugin_assets/imeetdashboard/images/green.jpg', :size  => '22x22' %> 
+     <% end %> 
+    </td>
+    <td> <%= i.done_ratio %> % </td>
+    
+
+
+    <td class="filename">
+
+        <%= i.updated_on.strftime("%B %d, %Y") %>
+
+    </td>
+     </tr>
+
+       <% count = count+1 %>
+  <% end %>
+
+<% end %>
+
+
+</table>

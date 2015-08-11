@@ -1,0 +1,53 @@
+@charset "utf-8";
+body {
+	overflow: visible;
+}
+
+
+
+#preloader {
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:transparent; /* change if the mask should have another color then white */
+	z-index:99; /* makes sure it stays on top */
+	display:none;
+}
+
+
+
+
+
+
+
+
+
+#status {
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizontally one the screen */
+	top:50%; /* centers the loading animation vertically one the screen */
+	background-image:url('status1.gif'); /* path to your loading animation */
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:-100px 0 0 -100px; /* is width and height divided by two */
+	display:none;
+}
+
+		.ui-widget-content {
+		
+			width: 400px;
+			height: 200px;
+			position:absolute;
+			margin-left:370px;
+			padding-left:20px;
+		
+			
+			background: -webkit-linear-gradient(#d9dade, #12a4c9); /* For Safari */
+			background: -o-linear-gradient(#d9dade, #12a4c9); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#d9dade, #12a4c9); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#d9dade, #12a4c9); /* Standard syntax (must be last) */
+}

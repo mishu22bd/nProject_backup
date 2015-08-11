@@ -1,0 +1,7 @@
+<%= form_for :fileuser, :url => update_multiple_fileusers_path, :html => {:method => :put} do |f| %>
+  
+<%= render "fields", :f => f %>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

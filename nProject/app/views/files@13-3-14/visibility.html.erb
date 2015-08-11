@@ -1,0 +1,49 @@
+
+<% file_id = params[:f_id]%>
+
+<%= form_tag edit_multiple_fileusers_path do %>
+<h2> <% f_name = Attachment.where(id: file_id).pluck(:filename) %>
+		   <% f_name.each do|f| %>
+				<%= f %>
+		   <% end %>
+		   <br />
+</h2>
+<div class="field">
+<% file_user_rows = Fileuser.where(attachment_id: file_id) %>
+
+<table class="list files">
+<% for u in file_user_rows %>
+   <% if  u.user_id.to_s == User.current.id.to_s %>
+  
+   	<% else %>
+  	<tr>
+		<td><%=  check_box_tag "fileuser_ids[]",u.id %></td>
+		<td class = "filename"><% user_name =  User.where(id: u.user_id).pluck(:firstname)%> 
+			<% user_name.each do|usr| %>
+
+			<%= usr %>
+			<% end %>
+			<% user_name =  User.where(id: u.user_id).pluck(:lastname)%>
+			<% user_name.each do|usr| %>
+
+			<%= usr %>
+			<% end %>
+			
+
+		</td>
+		<td class = "filename">
+			<% if u.permission_flag == 0 %>
+				<%= "Can not view" %>
+			<% else %>
+				<%= "Can view " %>
+			<% end %>		
+		</td>	
+	</tr>
+	<% end %>
+<% end %>
+</table>
+<%= submit_tag "Edit Permission" %>
+<% end %>
+
+
+</div>

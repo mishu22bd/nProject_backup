@@ -1,0 +1,21 @@
+<html>
+<body>
+	<div>
+	<form id="login_form" action="login_ajax.php">
+	 <p class="validateTips">All form fields are required.</p>
+	<table>
+   <tr><td> UserName:</td> <td><input type="text" name="user" id="user" value=""  onChange="ajaxFunction();" class="text ui-widget-content ui-corner-all" /></td></tr>
+   
+   <tr><td> Password:</td><td>  <input type="password" name="pswd" id="pswd" value=""  onChange="ajaxFunction();" class="text ui-widget-content ui-corner-all" /></td></tr>
+	
+		
+<tr><td><input type="submit" value="Login" class="submit" name="btnsubmit" onclick="writeMethod()"/>
+<input type="reset" value="Cancel"/></td></tr>
+	</table>
+	</form>
+	</div>
+
+</body>
+
+
+</html>

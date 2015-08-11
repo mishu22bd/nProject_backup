@@ -1,0 +1,91 @@
+<%= javascript_include_tag :"highcharts.js"%>
+<% if @numberOfIssues != 0 %>
+<%#= @numberOfIssues %>
+<div id="container" style="width:100%; height:320px;"></div>
+
+
+        <% oIP = (@newIssues.to_f/@numberOfIssues.to_f)*100.00 %>
+        <% oIPstring = oIP.round(2) %>
+
+        <% iIP = (@progressIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+        <% iIPstring = iIP.round(2) %>
+
+
+        <%# rIP = (@resolvedIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+        <%# rIPstring = rIP.round(2) %>
+
+
+
+        <% cIP = (@closedIssues.to_f/@numberOfIssues.to_f)*100.00  %>
+        <% cIPstring = cIP.round(2) %>
+<script>
+$(function () {
+        
+        // Radialize the colors
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+            return {
+                radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+        
+        // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '<%= @project %>'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                          //return  point.y:.2f ;
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'status',
+                data: [
+                    ['New',  <%= oIPstring %>],
+                    
+                    {
+                        name: 'Complete',
+                        y: <%= cIPstring %>,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['In Progress', <%= iIPstring %>]
+                ]
+            }]
+        });
+    });
+
+
+
+
+
+
+
+</script>
+
+
+
+<% end %>

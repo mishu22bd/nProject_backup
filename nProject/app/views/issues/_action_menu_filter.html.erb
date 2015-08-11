@@ -1,0 +1,15 @@
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        track_id = <%= @issue.tracker_id %>;
+        if(track_id == 4){
+            var rm = $("#main-menu ul a.selected");
+            rm.removeClass('selected');
+            $('.tasklist').addClass('selected')
+        }
+        if(track_id == 5){
+            var rm = $("#main-menu ul a.selected");
+            rm.removeClass('selected');
+            $('.issues').addClass('selected');
+        }
+    })
+</script>

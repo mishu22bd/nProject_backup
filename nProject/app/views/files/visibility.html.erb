@@ -1,0 +1,86 @@
+<% file_id = params[:f_id]%>
+
+<% @fileusers = Fileuser.where(:attachment_id => file_id) %>
+
+
+
+<h2> Edit Permission of
+
+<% attachmentnames = Boxelement.where(id: file_id).pluck(:name) %>
+<% for attachmentname in attachmentnames %>
+<%= attachmentname %>
+<% end %>
+
+ </h2>
+
+<% users = [] %>
+
+<%= form_tag  update_multiple_fileusers_path, :method => :put do %>
+  
+	
+
+
+  <% for fileuser in @fileusers %>
+
+	<table >	
+      <%= fields_for "fileusers[]", fileuser do|f| %>
+      	<tr >
+      		  	
+            <% a_id = fileuser.attachment_id %>
+            <% authors = Boxelement.where(id: a_id).pluck(:author_id) %>
+            <% for author in authors %>
+             <% author_id = author %>
+             <% end %>
+            <% if author_id.to_s == fileuser.user_id  %>
+
+             <% elsif User.where(id: fileuser.user_id).pluck(:login) == [] %>
+            <% else %>
+            
+
+              <% if users.include? fileuser.user_id %>
+              <% else %>
+              <% users<< fileuser.user_id %>
+              
+
+            <td>
+
+            	<% u_id = fileuser.user_id %>
+		        	<% userFirstnames = User.where(:id => u_id).pluck(:firstname) %>
+        			<% for uf in userFirstnames %>
+        			<strong><%= uf %></strong>
+        			<% end %>
+        			<% userLastnames = User.where(:id => u_id).pluck(:lastname) %>
+        			<% for ul in userLastnames %>
+        			<strong><%= ul %></strong>
+			        <% end %>
+			    	  <%= render "fields", :f =>f %>
+
+        		</td>
+            <% end %>
+            <% end %>
+            
+       	</tr> 		
+        <% end %>
+
+        <% end %>
+   
+    </table>
+
+        <%= submit_tag "Submit" %>
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+

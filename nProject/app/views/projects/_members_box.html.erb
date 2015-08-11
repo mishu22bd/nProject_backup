@@ -1,0 +1,13 @@
+  <% if @users_by_role.any? %>
+  <div class="members box" style="list-style:none;">
+    <h3><%=l(:label_member_plural)%></h3>
+    <% @users_by_role.keys.sort.each do |role| %>
+   <div style="background-color:#ccc; padding-left:5px;margin-bottom:5px;"><%=h role %> </div> <%#= @users_by_role[role].sort.collect{|u| link_to_user u}.join(",").html_safe %>
+    	<% @users_by_role[role].sort.each do |u| %>
+    	<li class="puserList" style="line-height:3em;margin-bottom:5px;"><%= avatar(u, :size => "32", :height => 32, :width => 32) %> &nbsp; <%= link_to_user u %>  </li>
+    	<% end %>
+    
+    <% end %>
+    
+  </div>
+  <% end %>

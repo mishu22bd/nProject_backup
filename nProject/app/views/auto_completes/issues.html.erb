@@ -1,0 +1,7 @@
+<%= raw @issues.uniq.map {|issue| {
+      'id' => issue.id,
+      'label' => "#{issue.tracker} ##{issue.project_issue_id}: #{truncate issue.subject.to_s, :length => 60}",
+      'value' => issue.project_issue_id
+      }
+    }.to_json
+%>

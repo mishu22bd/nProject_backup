@@ -1,0 +1,49 @@
+<table border = 1 bgcolor="#832837">
+	<tr><td>
+This is an automatically generated mail.
+Please don't reply.
+</td></tr>
+</table>
+
+
+
+<p>
+Dear 
+<%@firstName.each do |fname| %>
+<%= fname %>
+<% end %>
+<%@lastName.each do |lname| %>
+<%= lname %>
+<% end %>,
+</p>
+
+
+
+You are invited in a meeting.
+
+<h1>Meeting Synopsis</h1>
+
+<br />
+<p>
+<b>Coordinator: </b>   
+<%= @meetingCoordinatorFirstName %>
+<%= @meetingCoordinatorLastName %>
+
+<br />
+
+
+
+
+
+
+<b>Name: </b><%= @meetingTitle %><br />
+<b>Details: </b><%= @meetingDetails %><br />
+<b>Start from: </b><%= @meetingStartTime %><br />
+<b>Duration: </b><%= @meetingDuration%> minutes<br />
+
+</p>
+<p> if you don't want to attend the meeting please click the following URL</p>
+
+<% url = url_for(:controller => 'deny_invitations', :action => 'index', :host => "localhost:9000", :userId => @userId,:meetingId => @meetingId)  %>
+<%= link_to h(url),url %>
+<p><strong>......iMeet</strong></p>

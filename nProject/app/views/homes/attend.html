@@ -1,0 +1,136 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen, print"/>
+<script  type="text/javascript" src="js/base64_encode.js"></script>
+
+  <meta charset="UTF-8">
+	<script  type="text/javascript" src="attend_meeting.js"></script>
+
+	<script type="text/javascript">
+
+
+
+//$(document).ready(function(){  
+
+
+		// $('#button').on('click',function(e){
+
+       // e.preventDefault();
+		
+					 
+
+               
+
+  
+          //   $.post( "attend.php", $("#frame1").serializeArray(),function(){
+             //    $('#status').css({'display':'block'}).delay(500).fadeOut(); 
+         //   $('#preloader').css({'display':'block'}).delay(500).fadeOut('slow');
+			
+			
+
+
+        //     } );
+			 
+
+
+
+            
+
+
+  //  }); 
+//});
+</script>
+		
+	
+
+	
+	<script language="JavaScript">
+	function testResults (form) {
+    var meet_id = form.meet_id.value;
+	var user_name = form.user_name.value;
+	var password = form.password.value;
+	
+	var encoded_meet = base64_encode(meet_id);
+	var encoded_user = base64_encode(user_name);
+	var encoded_password = base64_encode(password);
+	
+
+	
+	var newurl="?"+encoded_meet+encoded_user+encoded_password;
+	alert ("You typed: " + newurl );
+	}
+</script>
+
+
+
+	
+
+
+
+	
+</head>	
+	
+
+
+<body>
+
+
+
+
+	<div id="container" class="ui-widget-content ui-corner-all" style="padding-left:10px;">
+		<h2 class="ui-widget-header ui-corner-all" id="ui-widget-header ui-corner-all"style= "z-index:10;">Attend Meeting</h2>
+		<table>
+		<form name="frame1" class="ui-widget-header ui-corner-all"style="position:relative; z-index:10; padding-left:40px;"action="" method="post" style="font-size:81.25%; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Segoe UI, Helvetica, Arial, Sans Serif;">
+			
+		
+
+
+			
+			
+			
+			
+			<p>
+				<tr><td>Meeting ID</label></td>
+				<td><input type="text" name="meet_id" required id="meet_id" /></td></tr>
+			</p>
+			
+				<p>
+				<tr><td>Name</label></td>
+				<td><input type="text" name="user_name" required id="user_name" /></td></tr>
+			</p>
+			
+			<p>
+				<tr><td>Password</label></td>
+				<td><input type="password" name="password" required id="password" /></td></tr>
+			</p>
+
+		
+			
+			
+			<p>
+				<tr><td><input id="button" type="submit" name="submit" value="Submit" onClick="testResults(this.form);" /></td>
+				<td><input type="reset" style="size:10;" value="Cancel"/></td></tr>
+			</p>
+		</form>
+		</table>
+	</div>
+	<div id="preloader" class="ui-widget-content ui-corner-all">
+    <div id="status" >&nbsp;</div>
+</div>
+
+	
+	
+	
+
+	
+	
+</body>
+</html>

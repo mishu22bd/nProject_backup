@@ -1,0 +1,95 @@
+
+
+<div class="splitcontenthometop">
+    
+  
+  <%=render :partial => 'common/calendar', :locals => {:calendar => @calendarLocal} %>
+   
+</div>
+
+
+
+
+  
+<br />
+<div class="splitcontenthomebottom">
+
+
+    <div class = "projects box">
+            <h4><%="Files"%></h4>
+            <%= render :partial => 'welcome/docs' %> 
+            </div>
+
+</div>
+
+
+
+<div class = "splitcontentmiddle">
+<div class="splitcontenthomeright">
+    <% if @projects.any? %>
+  <div class="projects box">
+  <h4><%=l(:label_project_latest)%></h4>
+    <ol>
+    <%count = 0%>
+    <% for project in @projects %>
+      <% count = count+1 %>
+      <%break if count>2 %>
+      <% @project = project %>
+      <li>
+      <%= link_to_project project %> (<%= project.created_on %>)
+      <%=  project.short_description %>
+      </li>
+      
+    <% end %><a href = "#">more..</a>
+    <% @project = nil %>
+    </ol>
+  </div>
+  <% end %>
+    <%= call_hook(:view_welcome_index_right, :projects => @projects) %>
+</div>
+  
+
+
+
+<div class="splitcontenthomeleft">
+   
+   
+  <div class="projects box">
+  <h4>Latest Issues</h4>
+ <% if @issues.any? %>
+
+  
+    <ol>
+    <%count = 0%>
+    <% for issue in @issues %>
+      <% count = count+1 %>
+      <%break if count>2 %>
+      <% @issue = issue %>
+      <li>
+
+      <%= link_to_issue issue %> (<%= issue.created_on %>)
+     
+      </li>
+      
+    <% end %><a href = "#">more..</a>
+    <% @issue = nil %>
+    </ol>
+
+ <% end %>
+  </div>
+ 
+</div>
+
+</div>
+
+
+
+
+
+
+<% content_for :header_tags do %>
+<%= auto_discovery_link_tag(:atom, {:controller => 'news', :action => 'index', :key => User.current.rss_key, :format => 'atom'},
+                                   :title => "#{Setting.app_title}: #{l(:label_news_latest)}") %>
+<%= auto_discovery_link_tag(:atom, {:controller => 'activities', :action => 'index', :key => User.current.rss_key, :format => 'atom'},
+                                   :title => "#{Setting.app_title}: #{l(:label_activity)}") %>
+<% end %>

@@ -1,0 +1,366 @@
+<%= javascript_include_tag :"grid.js" %>
+<%= stylesheet_link_tag :"main.css" %>
+
+<%= call_hook :view_account_login_top %>
+
+ 
+
+
+
+<div id="attached" class="row" style="position:absolute;left:0px; right: 0px; top:40px; "> 
+<div class="row" style="position:absolute;left: 250px; top:0px; " >
+  <div class="tweleve  columns">
+  <div class="row" >
+                <div class="small-2 columns">
+                  
+                      <div id="wb_Image16" style="position:absolute;left:348px;top:365px;width:75px;height:10px;z-index:23;">
+                            <img src="images/line_n.png" id="Image16" alt="" style="width:75px;height:10px;"></div>
+
+                    
+                </div>
+  </div>
+         <div class="row">
+                <div class="small-2 columns">
+                     
+                     <div id="wb_Image9" style="position:absolute;left:411px;top:184px;width:13px;height:360px;z-index:18;">
+                            <img src="images/n_line.png" id="Image9" alt="" style="width:13px;height:360px;">
+                      </div>
+                </div>
+        </div>
+
+
+      <div class="row">
+
+      <div class="small-6 columns">
+            
+            <div id="wb_Image10" style="position:absolute;left:417px;top:175px;width:40px;height:10px;z-index:19;">
+                  <img src="images/line_n.png" id="Image10" alt="" style="width:40px;height:10px;">
+            </div>
+
+
+
+      </div>
+        <div class="small-6 columns">
+          <div id="RollOver1" style="position:absolute;overflow:hidden;left: 455px;top:160px;width:140px;height:62px;z-index:1">
+            <a href="http://nproject.imeet.biz/">
+            <img class="hover" alt="" src="images/h_dashboard.png" style="left:0px;top:0px;width:140px;height:62px;">
+            <span><img alt="" src="images/n_dashboard.png" style="left:0px;top:0px;width:140px;height:62pxs"></span>
+             </a>
+          </div>
+       </div>
+
+
+     </div> 
+
+  <div class="row">
+                <div class="small-2 columns">
+                    
+                    <div id="wb_Image11" style="position:absolute;left:417px;top:280px;width:40px;height:10px;z-index:20;">
+                         <img src="images/line_n.png" id="Image11" alt="" style="width:40px;height:10px;">
+                    </div>
+
+                </div>
+  </div>
+      <div class="row">
+        <div class="small-4 columns">
+
+              <div id="RollOver2" style="position:absolute;overflow:hidden;left:455px;top:250px;width:100px;height:57px;z-index:2">
+                  <a href="http://nproject.imeet.biz/projects">
+                  <img class="hover" alt="" src="images/h_projects.png" style="left:0px;top:0px;width:100px;height:57px;">
+                  <span><img alt="" src="images/n_projects.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                  </a>
+              </div>
+            
+
+        <div class="row">
+                <div class="small-3 columns">
+                     
+                     <div id="wb_Image1" style="position:absolute;left:555px;top:265px;width:67px;height:27px;z-index:11;">
+                            <img src="images/arrow.png" id="Image1" alt="" style="width:67px;height:27px;">
+                      </div>
+                </div>
+        </div>
+
+        </div>
+
+        <div class= "row">
+          <div class="small-4 columns">
+              <div id="RollOver5" style="position:absolute;overflow:hidden;left:620px;top:250px;width:100px;height:57px;z-index:5">
+                  <a href="http://nproject.imeet.biz/projects/nksoft-imeet-development/todos/list/index">
+                  <img class="hover" alt="" src="images/h_tasks.png" style="left:0px;top:0px;width:100px;height:57px;">
+                  <span><img alt="" src="images/n_tasks.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                  </a>
+             </div>
+
+        <div class="row">
+                <div class="small-3 columns">
+                     <div id="wb_Image8" style="position:absolute;left:720px;top:280px;width:140px;height:60px;z-index:17;">
+                                  <img src="images/n_lrarrowv.png" id="Image8" alt="" style="width:140px;height:60px;">
+                              </div>
+                     
+                </div>
+        </div>
+
+          </div>
+        </div>
+      </div>
+ <div class="row">
+                <div class="small-2 columns">
+                  
+                           <div id="wb_Image16" style="position:absolute;left:417px;top:365px;width:40px;height:10px;z-index:23;">
+                            <img src="images/line_n.png" id="Image16" alt="" style="width:40px;height:10px;"></div>
+
+
+                </div>
+  </div>
+
+       <div class="row">
+
+            <div class="small-3 columns">
+                   
+                  <div id="RollOver3" style="position:absolute;overflow:hidden;left:455px;top:340px;width:100px;height:57px;z-index:3">
+                       <a href="http://nproject.imeet.biz/projects/imeet-biz-final-revisions/issues/calendar">
+                       <img class="hover" alt="" src="images/h_calendar.png" style="left:0px;top:0px;width:100px;height:57px;">
+                       <span><img alt="" src="images/n_calendar.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                       </a>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="small-3 columns">
+                    
+                        <div id="wb_Image2" style="position:absolute;left:555px;top:355px;width:67px;height:27px;z-index:12;">
+                            <img src="images/arrow.png" id="Image2" alt="" style="width:67px;height:27px;">
+                        </div>
+                  </div>
+            </div>
+
+          
+       <div class="row">
+            <div class="small-3 columns">
+                   
+                              
+                  <div id="RollOver6" style="position:absolute;overflow:hidden;left:620px;top:340px;width:100px;height:57px;z-index:6">
+                      <a href="">
+                      <img class="hover" alt="" src="images/h_mywork.png" style="left:0px;top:0px;width:100px;height:57px;">
+                      <span><img alt="" src="images/n_mywork.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                      </a>
+                  </div>
+            </div>
+              <div class="row">
+                  <div class="small-3 columns">
+                                                               
+                    <div id="wb_Image4" style="position:absolute;left:720px;top:355px;width:67px;height:27px;z-index:14;">
+                        <img src="images/arrow.png" id="Image4" alt="" style="width:67px;height:27px;">
+                    </div>
+                  </div>
+            </div>
+
+            
+      </div> 
+    
+      <div class="row">
+        
+        <div class="small-3 columns">
+
+              <div id="RollOver8" style="position:absolute;overflow:hidden;left:782px;top:340px;width:100px;height:57px;z-index:8">
+                <a href="">
+                <img class="hover" alt="" src="images/h_tdetails.png" style="left:0px;top:0px;width:100px;height:57px;">
+                <span><img alt="" src="images/n_tdetails.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                </a>
+              </div>
+              <div class="row">
+                  <div class="small-3 columns">
+                                                               
+                                             
+                          <div id="wb_Image6" style="position:absolute;left:882px;top:355px;width:67px;height:27px;z-index:15;">
+                              <img src="images/arrow.png" id="Image6" alt="" style="width:67px;height:27px;"></div>
+                  </div>
+               </div>
+
+
+        </div>
+
+
+      </div>
+
+      <div class= "row">
+        
+        <div class="small-3 columns">
+          
+                 <div id="RollOver9" style="position:absolute;overflow:hidden;left:945px;top:340px;width:100px;height:57px;z-index:9">
+                      <a href="">
+                      <img class="hover" alt="" src="images/h_submit.png" style="left:0px;top:0px;width:100px;height:57px;">
+                      <span><img alt="" src="images/n_submit.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                      </a>
+                  </div>   
+                
+            </div>
+      </div>
+
+
+
+
+
+      <div>
+<div class="row">
+                <div class="small-2 columns">
+                  
+                      
+
+                        <div id="wb_Image14" style="position:absolute;left:417px;top:455px;width:40px;height:10px;z-index:23;">
+                            <img src="images/line_n.png" id="Image14" alt="" style="width:40px;height:10px;"></div>
+
+
+                </div>
+  </div>
+         <div class="row">
+            <div class="small-4 columns">
+                   
+                  <div id="RollOver4" style="position:absolute;overflow:hidden;left:455px;top:430px;width:100px;height:57px;z-index:4">
+                      <a href="http://nproject.imeet.biz/issues">
+                      <img class="hover" alt="" src="images/h_issues.png" style="left:0px;top:0px;width:100px;height:57px;">
+                      <span><img alt="" src="images/n_issues.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                      </a>
+                  </div>
+
+
+            </div>
+
+                <div class="row">
+                  
+                  <div class= "small-3 columns">
+                      <div id="wb_Image3" style="position:absolute;left:555px;top:453px;width:67px;height:27px;z-index:13;">
+                        <img src="images/arrow.png" id="Image3" alt="" style="width:67px;height:27px;">
+                      </div>
+
+                </div>
+
+
+              <div class="row">
+                       <div class="small-4 columns">
+                          
+                          <div id="RollOver7" style="position:absolute;overflow:hidden;left:620px;top:430px;width:100px;height:57px;z-index:7">
+                             <a href="">
+                            <img class="hover" alt="" src="images/h_issue_d.png" style="left:0px;top:0px;width:100px;height:57px;">
+                            <span><img alt="" src="images/n_issue_d.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                            </a>
+                          </div>
+                        </div>
+                 <div class="row">
+                        <div class="small-2 columns">
+                                    
+                              <div id="wb_Image8" style="position:absolute;left:720px;top:400px;width:140px;height:60px;z-index:17;">
+                                  <img src="images/n_lrarrow.png" id="Image8" alt="" style="width:140px;height:60px;">
+                              </div>
+                        </div>
+                 </div>
+                    
+              </div>
+          </div>
+
+
+            <div class="row">
+              
+                    <div class="small-6 columns">
+                      
+                      <div id="wb_Image15" style="position:absolute;left:417px;top:535px;width:40px;height:10px;z-index:100;">
+                        <img src="images/line_n.png" id="Image15" alt="" style="width:40px;height:10px;"></div>
+
+                  </div>
+                            <div id="RollOver10" style="position:absolute;overflow:hidden;left:455px;top:520px;width:100px;height:57px;z-index:10">
+                                <a href="">
+                                <img class="hover" alt="" src="images/h_reporting.png" style="left:0px;top:0px;width:100px;height:57px;">
+                                <span><img alt="" src="images/n_reporting.png" style="left:0px;top:0px;width:100px;height:57px"></span>
+                                </a>
+                            </div>
+
+
+                    </div>
+
+
+            </div>
+
+
+
+      </div>
+
+
+
+    </div>    
+</div>
+</div>
+
+  <div id="login-form" class="row" style="position:absolute;left: -20px; top: -40px;">
+<%= form_tag(signin_path) do %>
+<%= back_url_hidden_field_tag %>
+
+
+
+
+<table class="small-6 columns" style= "border-color: transparent; " align = "left" padding= "5">
+    <tr><td><h3>Kit Carson Account</h3>
+    </td></tr>
+<tr>
+    <td style="text-align:right;"><label for="username"><%=l(:field_login)%>:</label></td>
+    <td style="text-align:left;"><%= text_field_tag 'username', params[:username], :tabindex => '1', :placeholder => 'Kit Carson username' %></td>
+</tr>
+<tr>
+    <td style="text-align:right;"><label for="password"><%=l(:field_password)%>:</label></td>
+    <td style="text-align:left;"><%= password_field_tag 'password', nil, :tabindex => '2', :placeholder =>'your password' %></td>
+</tr>
+<% if Setting.openid? %>
+<tr>
+  <td style="text-align:right;"><label for="openid_url"><%=l(:field_identity_url)%></label></td>
+  <td style="text-align:left;"><%= text_field_tag "openid_url", nil, :tabindex => '3' %></td>
+</tr>
+<% end %>
+<tr>
+    <td></td>
+    <td style="text-align:left;">
+        <% if Setting.autologin? %>
+        <label for="autologin"><%= check_box_tag 'autologin', 1, false, :tabindex => 4 %> <%= l(:label_stay_logged_in) %></label>
+        <% end %>
+    </td>
+</tr>
+<tr>
+    <td style="text-align:left;">
+        <% if Setting.lost_password? %>
+            <%= link_to l(:label_password_lost), lost_password_path %>
+        <% end %>
+    </td>
+    <td style="text-align:right;">
+        <input type="submit" name="login" value="<%=l(:button_login)%> &#187;" tabindex="5"/>
+    </td>
+</tr>
+</table>&nbsp;
+<% end %>
+
+
+</div>
+</div>
+<%= call_hook :view_account_login_bottom %>
+
+<% if params[:username].present? %>
+<%= javascript_tag "$('#password').focus();" %>
+<% else %>
+<%= javascript_tag "$('#username').focus();" %>
+<% end %>
+
+
+
+  
+    
+    <script>
+      $(document).foundation();
+    </script>
+<%= call_hook :view_account_login_bottom %>
+
+<% if params[:username].present? %>
+<%= javascript_tag "$('#password').focus();" %>
+<% else %>
+<%= javascript_tag "$('#username').focus();" %>
+<% end %>
+
+
+
+

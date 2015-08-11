@@ -1,0 +1,134 @@
+<div class="contextual">
+  <% if User.current.allowed_to?(:add_subprojects, @project) %>
+    <%= link_to l(:label_subproject_new), new_project_path(:parent_id => @project), :class => 'icon icon-add' %>
+  <% end %>
+  <% if User.current.allowed_to?(:close_project, @project) %>
+    <% if @project.active? %>
+      <%= link_to l(:button_close), close_project_path(@project), :data => {:confirm => l(:text_are_you_sure)}, :method => :post, :class => 'icon icon-lock' %>
+    <% else %>
+      <%= link_to l(:button_reopen), reopen_project_path(@project), :data => {:confirm => l(:text_are_you_sure)}, :method => :post, :class => 'icon icon-unlock' %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2> <%= l(:label_overview)%> </h2>
+
+
+
+<% unless @project.active? %>
+  <p class="warning"><span class="icon icon-lock"><%= l(:text_project_closed) %></span></p>
+<% end %>
+
+ <div class="splitcontenthomeleftproject">
+    <div class="pdash imeetprojectbox">
+   
+      <h3>Project Summary</h3>
+   
+     <%= render 'project_summary' %>
+
+    </div>
+
+    
+  </div>
+
+
+
+
+<div class = "splitcontentdashpro">
+
+   <div class="splitcontenthomeleft">
+     <% if @numberOfIssues != 0 %>
+     <div class="idash imeetbox">
+       <h3><%="Project Pie Chart"%></h3>
+        <%= render 'pie' %>
+     </div>
+   <% end %>
+   <% if @allFiles.count !=0 %>
+   <div class="fdash imeetbox">
+     <h3><%= "My Files" %></h3>
+      
+       <%= render 'list_files' %>
+    </div>
+   <% end %>
+  </div>
+
+
+<% if @numberOfIssues != 0 %>
+  <div class="splitcontenthomeright" >
+   <% if @myIssues.count !=0 %>   
+  <div class="codash imeetbox">
+     <h3><%="My Issues"%></h3>
+    
+      <% if User.current.allowed_to?(:view_issues, @project) %>
+        <%= render 'list_issues' %>
+      <% end %>
+     
+    </div>
+   <% end %>
+   <% if @myTasks.count !=0 %> 
+   <div class="tasklist imeetbox">
+     <h3><%="My Tasks"%></h3>
+     
+      <% if User.current.allowed_to?(:view_issues, @project) %>
+       <%= render 'list_tasks' %>
+      <% end %>
+   </div>
+   <% end %>
+
+  </div>
+
+<% end %>
+
+   
+  
+
+</div>
+
+
+
+
+
+<div class="splitcontentright">
+ 
+
+  
+  <%#= call_hook(:view_projects_show_right, :project => @project) %>
+</div>
+
+
+
+
+
+
+<% content_for :sidebar do %>
+      <p></p>
+    <!--  Added members box in sidebar   -->
+      <%= render :partial => 'members_box' %>
+
+    <!-- end adding memebers box    -->
+ <% if @news.any? && authorize_for('news', 'index') %>
+  <div class="news box">
+    <h3><%=l(:label_news_latest)%></h3>
+    <%= render :partial => 'news/news', :collection => @news %>
+    <p><%= link_to l(:label_news_view_all), project_news_index_path(@project) %></p>
+  </div>
+  <% end %>
+    <% if @total_hours.present? %>
+    <h3><%= l(:label_spent_time) %></h3>
+    <p><span class="icon icon-time"><%= l_hours(@total_hours) %></span></p>
+
+    <p>
+    <% if User.current.allowed_to?(:log_time, @project) %>
+      <%= link_to l(:button_log_time), new_project_time_entry_path(@project) %> |
+    <% end %>
+    <%= link_to(l(:label_details), project_time_entries_path(@project)) %> |
+    <%= link_to(l(:label_report), report_project_time_entries_path(@project)) %></p>
+    <% end %>
+    <%= call_hook(:view_projects_show_sidebar_bottom, :project => @project) %>
+<% end %>
+  <%#= call_hook(:view_projects_show_left, :project => @project) %>
+<% content_for :header_tags do %>
+<%= auto_discovery_link_tag(:atom, {:controller => 'activities', :action => 'index', :id => @project, :format => 'atom', :key => User.current.rss_key}) %>
+<% end %>
+
+<% html_title(l(:label_overview)) -%>

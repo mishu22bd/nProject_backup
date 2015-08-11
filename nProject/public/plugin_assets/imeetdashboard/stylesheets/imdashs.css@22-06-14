@@ -1,0 +1,113 @@
+/* Progress Bar for the tables in dashboard_Eumna*/
+.progress {
+ background-color: #B8B3B3;
+ height: 1rem;
+ width: 120px;
+ border: 1px solid #E1DADA;
+ padding-top: 0.2rem;
+ padding-bottom:  0.2rem;
+ padding-left: 0.1rem;
+ margin-bottom: 0.3rem;
+ margin-top: .3rem;
+ margin-right: .2rem;
+ margin-left: .2rem;
+
+  }
+ .progress .meter {
+   background: #2b9100; /**green color*/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   }
+ .progress.secondary .meter { /***this secondary class is *****/
+   background: transparent;   /**for the normal progressbar**/
+   height: 100%;
+   display: block;
+   padding-left: 10px;
+   padding-bottom:5px ;
+   color:#fff; 
+   }
+ .progress.success .meter {
+   background: #effc00;/**yellow color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#737373;
+   margin-top: -2px;
+   padding-bottom: 0.2em;
+   }
+ .progress.alert .meter {
+   background: #ff0000;/***red color**/
+   height: 100%;
+   width: 100px;
+   display: block;
+   color:#fff;
+   margin-top: -2px;
+   padding-bottom: 0.2em;}
+ .progress.radius {
+   -webkit-border-radius: 3px;
+   border-radius: 3px; }
+   .progress.radius .meter {
+     -webkit-border-radius: 4px;
+     border-radius: 4px; }
+ .progress.round {
+   -webkit-border-radius: 1000px;
+   border-radius: 1000px;
+   box-shadow: inset 0 0 5px #E1DADA;
+
+ }
+   .progress.round .meter {
+     -webkit-border-radius: 990px;
+     border-radius: 990px; }}
+
+
+
+
+/*  css for people table*/
+
+.faq-row {
+  background-color: #fff;
+  border: #ccc 1px solid;
+  margin-bottom: 12px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.faq-row-handle {
+  cursor: pointer;
+  display: block;
+  color: #191919;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 7px 30px 7px 10px;
+  line-height: 20px;
+  text-decoration: none;
+  outline: 0;
+  background-color: #fff;
+}
+
+.faq-row.open .faq-row-handle {
+ color:blue;
+ background-color: #fff;
+}
+
+.faq-row-content {
+  color: #666;
+  font-weight: normal;
+  line-height: 150%;
+  font-size: 13px;
+  display: none;
+}
+
+.faq-row-content p {
+  padding: 0 14px 10px 14px;
+}
+
+img{
+margin-bottom: 0px;
+margin-left: 2px;  
+}
+/** end of collapsible table   **/

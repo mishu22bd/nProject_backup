@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <%= stylesheet_link_tag :"screen.css" %>
+   <%= stylesheet_link_tag :"responsive.css" %>
+   <%= stylesheet_link_tag :"colorbox.css" %>
+</head>
+<body>
+
+  <div class="container">
+          <h1><%= @author.nil? ? l(:label_audit) : l(:label_user_activity, link_to_user(@author)).html_safe %>
+          </h1>
+          <span class="marker"><span class="dot"></span></span>
+          <p class="lead" style="margin-top:70px; float:left;"><%= l(:label_date_from_to, :start => format_date(@date_to - @days), :end => format_date(@date_to-1)) %>
+          </p>
+           <table class="active_table">
+              <tbody>  
+                <tr class="active_tr">
+                  <td id="pre">
+                    <%= link_to_content_update("\xc2\xab " + l(:label_previous_month),
+                     params.merge(:from => @date_to - @days - 1),
+                     :title => l(:label_date_from_to, :start => format_date(@date_to - 2*@days), :end => format_date(@date_to - @days - 1))) %>
+                  </td>
+                  <td id="nex">
+                     <%= link_to_content_update(l(:label_next_month) + " \xc2\xbb",
+                      params.merge(:from => @date_to + @days - 1),
+                      :title => l(:label_date_from_to, :start => format_date(@date_to), :end => format_date(@date_to + @days - 1))) unless @date_to >= Date.today %>
+                  </td>
+                </tr>
+              </tbody>
+           </table>
+
+
+
+            <div id="timelineContainer" class="timelineContainer">
+             
+  
+                  <%#=  if event.first.class == Issue||event.first.class==Attachment %>
+                        <% @events_by_day.keys.sort.reverse.each do |day| %>
+
+
+                        
+                      
+                        <div class="timelineMajor">
+                          
+                                  <dt id="19540517">
+                                            <% sort_activity_events(@events_by_day[day]).each do |event|%>
+                                                  <% mclass  = event.first.class %>
+                                                    <% if mclass == Issue %>
+                                                       
+                                                      <% if event.first.tracker_id == 5%>
+                                                         <% format_activity_day(day) %>
+                                  
+                                            <% issue_headline=[] %>
+                                            <% issue_headline<< " Issue #" %> 
+                                            <% issue_headline<< event.first.id %> 
+                                            <% issue_headline<< " ( " %>  
+                                            <% issue_headline<< event.first.status %>
+                                            <% issue_headline<< " ) " %> 
+                                            <% issue_headline<< event.first.subject %>
+                                            <% issue_headline_final = issue_headline.join %>
+                                           <h4><%=  link_to issue_headline_final,issue_path(event.first.id) %></h4>
+                                    </dt>       
+                                  
+                                                        <% else %>
+                                 <dt id="19540517">
+                                            <% task_headline=[] %>
+                                            <% task_headline<< " Task #" %>
+                                            <% task_headline<< event.first.id %> 
+                                            <% task_headline<< " ( " %>  
+                                            <% task_headline<< event.first.status %>
+                                            <% task_headline<< " ) " %> 
+                                            <% task_headline<< event.first.subject %>
+                                            <% task_headline_final = task_headline.join %>
+                                            <h4><%=  link_to task_headline_final,issue_path(event.first.id) %></h4>
+                                 
+                                                        <% end %>    
+                                </dt>     
+            <% end %>
+
+  
+            
+           <dt id="19540517">
+                     <% mclass  = event.first.class %>
+                           <% if mclass == Issue %>
+                                   <% if event.first.tracker_id == 5%>
+                                    <%#= " Issue" %>
+                                   <% end %>
+                              
+                                <table class="active_table">
+                                    <tr>
+                                        <td>
+                                             <div id="pic" style="margin-top:2px; float:left">
+                                                  <% m_id = event.first.assigned_to_id %>
+                                            </div>
+                                        </td>
+                                    </tr>
+                           <% if m_id != nil %>
+                                 <tr class="impTab">
+                                      <td>
+                                        <%= avatar(User.find(m_id), :size => "24")%>              
+                           <% end %>
+                                  
+                                       <% assignee_id = event.first.assigned_to_id %>
+                                          <% assignee_fname_of_the_issue = User.where(id: assignee_id).pluck(:firstname) %>
+                                          <% assignee_fname_of_the_issue.each do |assignee_fname| %>
+                                           <%= assignee_fname %>
+                                          <% end %>
+                                          <% assignee_lname_of_the_issue = User.where(id: assignee_id).pluck(:lastname) %>
+                                          <% assignee_lname_of_the_issue.each do |assignee_lname| %>
+                                          <%= assignee_lname %> 
+                                          <% end %>
+                                          updated <%= event.first.subject %> on <%= event.first.updated_on.strftime("%B %d, %Y") %>
+                                        </td>
+                                 </tr>
+                                  <tr>
+                                         <td>Update Time:
+                                         <%= event.first.updated_on.strftime("%B %d, %Y") %>
+                                         </td>
+                                 </tr>
+                           
+                                  <tr>
+                                          <td>Subject:
+                                          <% subject = event.first.subject %> 
+                                          <%=  link_to subject,issue_path(event.first.id) %>
+                                          </td>
+                                  </tr>
+                           
+                                   <tr>
+                                          <td>Description:
+                                          <%= event.first.description %>   
+                                          </td> 
+                                   </tr>
+                          
+                                </table>
+                        
+                      <% end %>
+          <% end %>       
+        
+          
+          </dt>
+      </div><!-- /.timelineMajor -->
+
+    <% end %>
+    
+
+  <!-- GLOBAL CORE SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <%= javascript_include_tag :"colorbox.js" %>
+  <%= javascript_include_tag :"timeliner.min.js" %>
+ 
+  <script>
+    $(document).ready(function() {
+      $.timeliner({
+        startOpen:['#19550828EX', '#19630828EX']
+      });
+      $.timeliner({
+        timelineContainer: '#timelineContainer_2'
+      });
+      // Colorbox Modal
+      $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+    });
+
+  </script>
+
+</body>
+</html>
+
+
+
+
