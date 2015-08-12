@@ -12,9 +12,3 @@ end
 
 # Initialize the rails application
 RedmineApp::Application.initialize!
-
-ActionMailer::Base.delivery_method = :smtp
-
-
-
-

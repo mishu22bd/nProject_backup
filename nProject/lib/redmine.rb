@@ -269,7 +269,6 @@ Redmine::MenuManager.map :project_menu do |menu|
 
   menu.push :repository, { :controller => 'repositories', :action => 'show', :repository_id => nil, :path => nil, :rev => nil },
               :if => Proc.new { |p| p.repository && !p.repository.new_record? }
-  
   #menu.push :file_new, { :controller => 'files', :action => 'new' }, :caption => 'All tasks', :param => :project_id
  
 end
@@ -288,6 +287,7 @@ end
 Redmine::Search.map do |search|
   search.register :issues
   search.register :news
+  search.register :documents
   search.register :changesets
   search.register :wiki_pages
   search.register :messages

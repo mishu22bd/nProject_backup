@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
 
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
-  create_table "arns", :force => true do |t|
-    t.string  "question"
-    t.integer "yes",      :default => 0
-    t.integer "no",       :default => 0
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer  "container_id"
     t.string   "container_type", :limit => 30

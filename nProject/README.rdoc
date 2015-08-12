@@ -1,28 +1,5 @@
-== README
+= Redmine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Redmine is a flexible project management web application written using Ruby on Rails framework.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+More details can be found in the doc directory or on the official website http://www.redmine.org

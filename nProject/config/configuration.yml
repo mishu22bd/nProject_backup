@@ -221,18 +221,6 @@ production:
             user_name: 'info@nksoft.com'
             password: 'chmjig8PU96yoyz'
 
-development:
-  email_delivery:
-
-         delivery_method: :smtp
-         smtp_settings:
-            enable_starttls_auto: true
-            address: "smtp.gmail.com"
-            port: 465
-            domain: "smtp.gmail.com"    
-            authentication: :plain
-            user_name: 'mishu22bd@gmail.com'
-            password: 'ABCabc!@#123'
 
 #    delivery_method: :smtp
  #   smtp_settings:

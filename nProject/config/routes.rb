@@ -329,15 +329,8 @@ resources :fileusers do
   resources :enumerations, :except => :show
   match 'enumerations/:type', :to => 'enumerations#index', :via => :get
 
-
-
-
   get 'projects/:id/search', :controller => 'search', :action => 'index'
   get 'search', :controller => 'search', :action => 'index'
-
-
-
-  
 
   match 'mail_handler', :controller => 'mail_handler', :action => 'index', :via => :post
 
@@ -373,10 +366,6 @@ resources :fileusers do
 
   get 'robots.txt', :to => 'welcome#robots'
 
-  get 'arns', :to => 'arns#index'
-  post 'post/:id/vote', :to => 'arns#vote'
-
-
   Dir.glob File.expand_path("plugins/*", Rails.root) do |plugin_dir|
     file = File.join(plugin_dir, "config/routes.rb")
     if File.exists?(file)
@@ -389,6 +378,3 @@ resources :fileusers do
     end
   end
 end
-
-
-
