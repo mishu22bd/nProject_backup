@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -864,6 +865,16 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
     t.integer "builtin",                         :default => 0,         :null => false
     t.text    "permissions"
     t.string  "issues_visibility", :limit => 30, :default => "default", :null => false
+  end
+
+  create_table "rutils", :force => true do |t|
+    t.string "ResourceName"
+    t.string "AssignedDate"
+    t.string "TotalHoursPerWeek"
+    t.string "TotalHoursAssignedPerWeek"
+    t.string "TotalHoursAvailablePerWeek"
+    t.string "PercentUtilized"
+    t.string "YTDHoursWorked"
   end
 
   create_table "settings", :force => true do |t|

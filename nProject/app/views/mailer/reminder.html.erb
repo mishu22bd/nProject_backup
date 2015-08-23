@@ -1,9 +1,16 @@
-<p><%= l(:mail_body_reminder, :count => @issues.size, :days => @days) %></p>
-
-<ul>
-<% @issues.each do |issue| -%>
-  <li><%=h issue.project %> - <%=link_to(h("#{issue.tracker} ##{issue.project_issue_id}"), :controller => 'issues', :action => 'show', :id => issue, :only_path => false)%>: <%=h issue.subject %></li>
-<% end -%>
-</ul>
-
-<p><%= link_to l(:label_issue_view_all), @issues_url %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your User Name is , <%= @user.name %></h1>
+    <p>
+      You have Task <%= @i.subject %>.<br>
+    </p>
+    <p>
+      You have due issue <%= @i.id%> due today
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

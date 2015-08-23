@@ -221,6 +221,19 @@ production:
             user_name: 'info@nksoft.com'
             password: 'chmjig8PU96yoyz'
 
+development:
+  email_delivery:
+
+         delivery_method: :smtp
+         smtp_settings:
+            enable_starttls_auto: true
+            address: "nmail.imeet.biz"
+            port: 465
+            domain: "nmail.imeet.biz"    
+            authentication: :plain
+            user_name: 'sayem@nksoft.com'
+            password: 'scooter9'
+
 
 #    delivery_method: :smtp
  #   smtp_settings:
