@@ -83,6 +83,7 @@ Redmine::CustomFieldFormat.map do |fields|
   fields.register 'bool', :label => :label_boolean
   fields.register 'user', :only => %w(Issue TimeEntry Version Project), :edit_as => 'list'
   fields.register 'version', :only => %w(Issue TimeEntry Version Project), :edit_as => 'list'
+
 end
 
 # Permissions
@@ -155,6 +156,7 @@ Redmine::AccessControl.map do |map|
     map.permission :comment_news, {:comments => :create}
   end
 
+
   map.project_module :documents do |map|
     map.permission :add_documents, {:documents => [:new, :create, :add_attachment]}, :require => :loggedin
     map.permission :edit_documents, {:documents => [:edit, :update, :add_attachment]}, :require => :loggedin
@@ -162,6 +164,7 @@ Redmine::AccessControl.map do |map|
     map.permission :view_documents, {:documents => [:index, :show, :download]}, :read => true
   end
 
+  
   map.project_module :files do |map|
     map.permission :manage_files, {:files => [:new, :create]}, :require => :loggedin
     map.permission :view_files, {:files => :index, :versions => :download}, :read => true

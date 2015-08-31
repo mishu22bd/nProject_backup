@@ -337,7 +337,7 @@ div.new-button{background: none repeat scroll 0 0 #E6DEDE; border-color: rgba(0,
 #watchers select {width: 95%; display: block;}
 #watchers a.delete {opacity: 0.4; vertical-align: middle;}
 #watchers a.delete:hover {opacity: 1;}
-#watchers img.gravatar {margin: 0 4px 2px 0;}
+
 
 span#watchers_inputs {overflow:auto; display:block;}
 span.search_for_watchers {display:block;}

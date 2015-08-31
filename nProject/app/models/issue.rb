@@ -571,7 +571,23 @@ class Issue < ActiveRecord::Base
       errors.add :due_date, :greater_than_start_date
     end
 
-    if start_date && start_date_changed? && soonest_start && start_date < soonest_start
+  #Sayem Code - normal as 7 days
+  def validate_issue
+    if due_date && start_date && (start_date_changed? || due_date_changed?) && (due_date == start_date && estimated_hours > 8)
+      errors.add :estimated_hours
+      end
+  end 
+
+
+    #Sayem Code - normal as 7 days
+  def validate_issue
+    if (due_date && start_date && (start_date_changed? || due_date_changed?) && due_date > start_date && due_date - start_date + 1 >= 7 && estimated_hours > 45 || due_date - start_date + 1 == 2 && estimated_hours > 16 || due_date - start_date + 1 == 3 && estimated_hours > 24 || due_date - start_date + 1 == 4 && estimated_hours > 32 || due_date - start_date + 1 == 5 && estimated_hours > 40 || due_date == start_date && estimated_hours > 8)
+      errors.add :estimated_hours 
+      end
+  end
+
+
+  if start_date && start_date_changed? && soonest_start && start_date < soonest_start
       errors.add :start_date, :earlier_than_minimum_start_date, :date => format_date(soonest_start)
     end
 
@@ -693,7 +709,7 @@ class Issue < ActiveRecord::Base
     false
   end
 
-  # Return true if the issue is being closed
+  # Return true if the issue is being closed - me (Sayem)
   def closing?
     if !new_record? && status_id_changed?
       if status_was && status && !status_was.is_closed? && status.is_closed?

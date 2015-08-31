@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
 
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
-  create_table "arns", :force => true do |t|
-    t.string  "question"
-    t.integer "yes",      :default => 0
-    t.integer "no",       :default => 0
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer  "container_id"
     t.string   "container_type", :limit => 30
@@ -144,21 +138,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
   end
 
   add_index "changesets_issues", ["changeset_id", "issue_id"], :name => "changesets_issues_ids", :unique => true
-
-  create_table "cms_menus", :force => true do |t|
-    t.string   "name"
-    t.string   "caption"
-    t.string   "path"
-    t.integer  "status_id"
-    t.integer  "position"
-    t.string   "menu_type"
-    t.integer  "parent_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "visibility"
-  end
-
-  add_index "cms_menus", ["visibility"], :name => "index_cms_menus_on_visibility"
 
   create_table "comments", :force => true do |t|
     t.string   "commented_type", :limit => 30, :default => "", :null => false
@@ -431,28 +410,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
   add_index "enumerations", ["id", "type"], :name => "index_enumerations_on_id_and_type"
   add_index "enumerations", ["project_id"], :name => "index_enumerations_on_project_id"
 
-  create_table "expenses", :force => true do |t|
-    t.date     "expense_date"
-    t.decimal  "price",          :precision => 10, :scale => 2, :default => 0.0,  :null => false
-    t.text     "description"
-    t.integer  "contact_id"
-    t.integer  "author_id"
-    t.integer  "project_id"
-    t.integer  "status_id"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
-    t.integer  "assigned_to_id"
-    t.string   "currency"
-    t.boolean  "is_billable",                                   :default => true
-    t.decimal  "tax",            :precision => 6,  :scale => 4
-  end
-
-  add_index "expenses", ["assigned_to_id"], :name => "index_expenses_on_assigned_to_id"
-  add_index "expenses", ["author_id"], :name => "index_expenses_on_author_id"
-  add_index "expenses", ["contact_id"], :name => "index_expenses_on_contact_id"
-  add_index "expenses", ["project_id"], :name => "index_expenses_on_project_id"
-  add_index "expenses", ["status_id"], :name => "index_expenses_on_status_id"
-
   create_table "fileusers", :force => true do |t|
     t.string  "user_id"
     t.integer "attachment_id"
@@ -472,9 +429,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
     t.boolean "flag",       :default => true
   end
 
-  create_table "homes", :force => true do |t|
-  end
-
   create_table "imeetcards", :force => true do |t|
   end
 
@@ -492,65 +446,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
     t.datetime "start_from"
     t.integer  "duration"
   end
-
-  create_table "invoice_lines", :force => true do |t|
-    t.integer  "invoice_id"
-    t.integer  "position"
-    t.decimal  "quantity",                   :precision => 10, :scale => 2, :default => 1.0, :null => false
-    t.string   "description", :limit => 512
-    t.decimal  "tax",                        :precision => 10, :scale => 2
-    t.decimal  "price",                      :precision => 10, :scale => 2, :default => 0.0, :null => false
-    t.string   "units"
-    t.datetime "created_at",                                                                 :null => false
-    t.datetime "updated_at",                                                                 :null => false
-    t.decimal  "discount",                   :precision => 6,  :scale => 4
-  end
-
-  add_index "invoice_lines", ["invoice_id"], :name => "index_invoice_lines_on_invoice_id"
-
-  create_table "invoice_payments", :force => true do |t|
-    t.decimal  "amount",       :precision => 10, :scale => 2
-    t.datetime "payment_date"
-    t.integer  "invoice_id"
-    t.string   "description"
-    t.integer  "author_id"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
-  end
-
-  add_index "invoice_payments", ["invoice_id"], :name => "index_invoice_payments_on_invoice_id"
-
-  create_table "invoices", :force => true do |t|
-    t.string   "number"
-    t.datetime "invoice_date"
-    t.decimal  "discount",       :precision => 10, :scale => 2, :default => 0.0, :null => false
-    t.integer  "discount_type",                                 :default => 0,   :null => false
-    t.text     "description"
-    t.datetime "due_date"
-    t.string   "language"
-    t.string   "currency"
-    t.integer  "status_id"
-    t.integer  "contact_id"
-    t.integer  "project_id"
-    t.integer  "assigned_to_id"
-    t.integer  "author_id"
-    t.datetime "created_at",                                                     :null => false
-    t.datetime "updated_at",                                                     :null => false
-    t.string   "subject"
-    t.decimal  "amount",         :precision => 10, :scale => 2, :default => 0.0, :null => false
-    t.integer  "comments_count"
-    t.datetime "paid_date"
-    t.decimal  "balance",        :precision => 10, :scale => 2, :default => 0.0
-    t.string   "type"
-    t.string   "order_number"
-  end
-
-  add_index "invoices", ["assigned_to_id"], :name => "index_invoices_on_assigned_to_id"
-  add_index "invoices", ["author_id"], :name => "index_invoices_on_author_id"
-  add_index "invoices", ["contact_id"], :name => "index_invoices_on_contact_id"
-  add_index "invoices", ["order_number"], :name => "index_invoices_on_order_number"
-  add_index "invoices", ["project_id"], :name => "index_invoices_on_project_id"
-  add_index "invoices", ["status_id"], :name => "index_invoices_on_status_id"
 
   create_table "issue_categories", :force => true do |t|
     t.integer "project_id",                   :default => 0,  :null => false
@@ -697,6 +592,11 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
   add_index "messages", ["last_reply_id"], :name => "index_messages_on_last_reply_id"
   add_index "messages", ["parent_id"], :name => "messages_parent_id"
 
+  create_table "mutils", :force => true do |t|
+    t.string "tabmenu"
+    t.string "Click"
+  end
+
   create_table "news", :force => true do |t|
     t.integer  "project_id"
     t.string   "title",          :limit => 60, :default => "", :null => false
@@ -739,44 +639,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
-  end
-
-  create_table "pages", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.string   "summary"
-    t.string   "keywords"
-    t.text     "description"
-    t.text     "content"
-    t.string   "content_type"
-    t.integer  "status_id",    :default => 0
-    t.integer  "parent_id"
-    t.integer  "project_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.string   "visibility"
-  end
-
-  add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
-  add_index "pages", ["visibility"], :name => "index_pages_on_visibility"
-
-  create_table "pages_parts", :force => true do |t|
-    t.integer "page_id"
-    t.integer "part_id"
-    t.integer "position"
-    t.integer "status_id", :default => 0
-  end
-
-  add_index "pages_parts", ["page_id", "part_id"], :name => "index_pages_parts_on_page_id_and_part_id"
-
-  create_table "parts", :force => true do |t|
-    t.string   "name"
-    t.string   "part_type"
-    t.text     "content"
-    t.string   "content_type"
-    t.boolean  "is_cached",    :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -867,16 +729,6 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
     t.string  "issues_visibility", :limit => 30, :default => "default", :null => false
   end
 
-  create_table "rutils", :force => true do |t|
-    t.string "ResourceName"
-    t.string "AssignedDate"
-    t.string "TotalHoursPerWeek"
-    t.string "TotalHoursAssignedPerWeek"
-    t.string "TotalHoursAvailablePerWeek"
-    t.string "PercentUtilized"
-    t.string "YTDHoursWorked"
-  end
-
   create_table "settings", :force => true do |t|
     t.string   "name",       :default => "", :null => false
     t.text     "value"
@@ -928,15 +780,15 @@ ActiveRecord::Schema.define(:version => 20150220141744) do
   create_table "todo_items", :force => true do |t|
     t.integer  "issue_id",                                        :null => false
     t.integer  "todo_list_id",                                    :null => false
-    t.datetime "updated_at",   :default => '2014-02-09 12:51:00'
-    t.datetime "completed_at", :default => '2014-02-09 12:51:00'
+    t.datetime "updated_at",   :default => '2014-02-11 08:23:00'
+    t.datetime "completed_at", :default => '2014-02-11 08:23:00'
     t.integer  "position",     :default => 1
   end
 
   create_table "todo_lists", :force => true do |t|
     t.string   "name"
     t.integer  "position",   :default => 1
-    t.datetime "updated_at", :default => '2014-02-09 12:51:00'
+    t.datetime "updated_at", :default => '2014-02-11 08:23:00'
     t.integer  "project_id",                                    :null => false
     t.integer  "author_id",                                     :null => false
     t.boolean  "is_private", :default => false

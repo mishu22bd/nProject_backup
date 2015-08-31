@@ -61,6 +61,11 @@ RedmineApp::Application.routes.draw do
   get '/projects/:project_id/issues/calendar', :to => 'calendars#show', :as => 'project_calendar'
   get '/issues/calendar', :to => 'calendars#show'
 
+
+  #resource utilization 
+  get 'resource_util', :to => 'resource_util#index'
+
+
   #tasks
   get 'task', :to => 'issues#tasks', :format => false
 
